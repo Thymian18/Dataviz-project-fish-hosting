@@ -33,6 +33,10 @@ In terms of data cleaning, since the datasets are taken from OpenSwissData, they
 > - What am I trying to show with my visualization?
 > - Think of an overview for the project, your motivation, and the target audience.
 
+We think that awareness about the overfishing and destruction of habitats of certain species needs to be raised.
+With our project, we try to show the users in a fun and interactive way how the fish population in Switzerland is evolving, which species are getting endangered, and which species are dominating others. The users should get a feeling of how things change deep down in our country's waters.
+Furthermore, users might learn new things about species that they have not known until now, such as which species live in which kinds of lakes.
+
 ### Exploratory Data Analysis
 
 > Pre-processing of the data set you chose
