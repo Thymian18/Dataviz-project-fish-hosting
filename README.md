@@ -19,7 +19,7 @@ Please, fill the following sections about your project.
 
 ### Dataset
 
-We will mainly explore two datasets that both show the amount of fish caught (in kg) in the most popular lakes of Switzerland. The datasets show the catch amount per fish species, lake, and year. One dataset contains the amount of fish that professional fishers caught, one shows the amount of fish caught by hobby fishers.
+We will mainly explore two datasets that both show the amount of fish caught (in kg) in the most popular lakes of Switzerland. The datasets show the catch amount per fish species, lake, and year. One dataset contains the amount of fish that professional fisher caught, one shows the amount of fish caught by hobby fisher.
 In addition to the amount of fish, the surface size of each lake is given in km2
 
 In terms of data cleaning, since the datasets are taken from OpenSwissData, they are very clean already and can be used rightaway. Some species have missing numbers, but those are mostly the species that are more rare anyways. We will thus focus on the most popular fish species in Switzerland.
@@ -44,11 +44,12 @@ Furthermore, users might learn new things about species that they have not known
 
 ### Related work
 
-
 > - What others have already done with the data?
 > - Why is your approach original?
 > - What source of inspiration do you take? Visualizations that you found on other websites or magazines (might be unrelated to your data).
 > - In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
+
+The datasets were already used by other websites and magazines, one of which is the magazine "[Petri-Heil](https://www.petri-heil.ch/)" which is very popular among fisher. They wrote an article about fish statistics up until the year 2016, which you can find [here](https://www.petri-heil.ch/index.php?cmspath=de/schweizer-fischerei-in-zahlen--723). In the article, various species' statistics are shown, especially the amount of perch, pike, and cisco caught in 2016 by professionals versus the amount caught by hobby fisher.
 
 ## Milestone 2 (18th April, 5pm)
 
