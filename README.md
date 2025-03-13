@@ -36,6 +36,7 @@ In terms of data cleaning, since the datasets are taken from OpenSwissData, they
 We think that awareness about the overfishing and destruction of habitats of certain species needs to be raised.
 With our project, we try to show the users in a fun and interactive way how the fish population in Switzerland is evolving, which species are getting endangered, and which species are dominating others. The users should get a feeling of how things change deep down in our country's waters.
 Furthermore, users might learn new things about species that they have not known until now, such as which species live in which kinds of lakes.
+On our website, the user will find the opportunity of an epic saibling (maybe other species too) death match. In other words, the user can choose two lakes among all the given lakes on an interactive map. The curser on the map could be shown in the form of a fishing rod. Starting at the year 1997, the "game" iterates over all years in chronological order. Each year denotes one round of the death match and attributes a point to the lake in which more saiblings were caught. At the end, the lake with more points wins and gets a crown.
 
 ### Exploratory Data Analysis
 
@@ -50,6 +51,8 @@ Furthermore, users might learn new things about species that they have not known
 > - In case you are using a dataset that you have already explored in another context (ML or ADA course, semester project...), you are required to share the report of that work to outline the differences with the submission for this class.
 
 The datasets were already used by other websites and magazines, one of which is the magazine "[Petri-Heil](https://www.petri-heil.ch/)" which is very popular among fisher. They wrote an article about fish statistics up until the year 2016, which you can find [here](https://www.petri-heil.ch/index.php?cmspath=de/schweizer-fischerei-in-zahlen--723). In the article, various species' statistics are shown, especially the amount of perch, pike, and cisco caught in 2016 by professionals versus the amount caught by hobby fisher.
+
+
 
 ## Milestone 2 (18th April, 5pm)
 
