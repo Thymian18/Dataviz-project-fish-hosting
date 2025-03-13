@@ -19,9 +19,13 @@ Please, fill the following sections about your project.
 
 ### Dataset
 
-> Find a dataset (or multiple) that you will explore. Assess the quality of the data it contains and how much preprocessing / data-cleaning it will require before tackling visualization. We recommend using a standard dataset as this course is not about scraping nor data processing.
->
-> Hint: some good pointers for finding quality publicly available datasets ([Google dataset search](https://datasetsearch.research.google.com/), [Kaggle](https://www.kaggle.com/datasets), [OpenSwissData](https://opendata.swiss/en/), [SNAP](https://snap.stanford.edu/data/) and [FiveThirtyEight](https://data.fivethirtyeight.com/)), you could use also the DataSets proposed by the ENAC (see the Announcements section on Zulip).
+We will mainly explore two datasets that both show the amount of fish caught (in kg) in the most popular lakes of Switzerland. The datasets show the catch amount per fish species, lake, and year. One dataset contains the amount of fish that professional fishers caught, one shows the amount of fish caught by hobby fishers.
+In addition to the amount of fish, the surface size of each lake is given in km2
+
+In terms of data cleaning, since the datasets are taken from OpenSwissData, they are very clean already and can be used rightaway. Some species have missing numbers, but those are mostly the species that are more rare anyways. We will thus focus on the most popular fish species in Switzerland.
+
+[Professional fisher](https://opendata.swiss/fr/dataset/berufsfischerei-ertrag5)
+[Hobby fisher](https://opendata.swiss/fr/dataset/angelfischerei-ertrag6)
 
 ### Problematic
 
