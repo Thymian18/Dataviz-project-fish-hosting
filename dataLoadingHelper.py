@@ -41,8 +41,8 @@ def plot_lake_timeseries(years, timeseries, lake_name):
     df = pd.DataFrame({'Year': years, 'Seeforelle': timeseries})
 
     fig = px.line(df, x='Year', y='Seeforelle', 
-                  title=f'Seeforelle Population in {lake_name} Over Time',
-                  labels={'Year': 'Year', 'Seeforelle': 'Seeforelle Population'},
+                  title=f'Laketrout fishing count  in {lake_name} Over Time',
+                  labels={'Year': 'Year', 'Seeforelle': 'Laketrout fishing count'},
                   markers=True)
 
     fig.show()
