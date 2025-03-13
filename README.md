@@ -4,6 +4,7 @@
 | -------------- | ------ |
 | Damian Kopp | 324944 |
 | Jakob Behler | 325413 |
+| Lindsay Bordier | 325529 |
 
 [Milestone 1](#milestone-1) • [Milestone 2](#milestone-2) • [Milestone 3](#milestone-3)
 
@@ -18,15 +19,23 @@ Please, fill the following sections about your project.
 
 ### Dataset
 
-> Find a dataset (or multiple) that you will explore. Assess the quality of the data it contains and how much preprocessing / data-cleaning it will require before tackling visualization. We recommend using a standard dataset as this course is not about scraping nor data processing.
->
-> Hint: some good pointers for finding quality publicly available datasets ([Google dataset search](https://datasetsearch.research.google.com/), [Kaggle](https://www.kaggle.com/datasets), [OpenSwissData](https://opendata.swiss/en/), [SNAP](https://snap.stanford.edu/data/) and [FiveThirtyEight](https://data.fivethirtyeight.com/)), you could use also the DataSets proposed by the ENAC (see the Announcements section on Zulip).
+We will mainly explore two datasets that both show the amount of fish caught (in kg) in the most popular lakes of Switzerland. The datasets show the catch amount per fish species, lake, and year. One dataset contains the amount of fish that professional fishers caught, one shows the amount of fish caught by hobby fishers.
+In addition to the amount of fish, the surface size of each lake is given in km2
+
+In terms of data cleaning, since the datasets are taken from OpenSwissData, they are very clean already and can be used rightaway. Some species have missing numbers, but those are mostly the species that are more rare anyways. We will thus focus on the most popular fish species in Switzerland.
+
+[Professional fisher](https://opendata.swiss/fr/dataset/berufsfischerei-ertrag5)
+[Hobby fisher](https://opendata.swiss/fr/dataset/angelfischerei-ertrag6)
 
 ### Problematic
 
 > Frame the general topic of your visualization and the main axis that you want to develop.
 > - What am I trying to show with my visualization?
 > - Think of an overview for the project, your motivation, and the target audience.
+
+We think that awareness about the overfishing and destruction of habitats of certain species needs to be raised.
+With our project, we try to show the users in a fun and interactive way how the fish population in Switzerland is evolving, which species are getting endangered, and which species are dominating others. The users should get a feeling of how things change deep down in our country's waters.
+Furthermore, users might learn new things about species that they have not known until now, such as which species live in which kinds of lakes.
 
 ### Exploratory Data Analysis
 
