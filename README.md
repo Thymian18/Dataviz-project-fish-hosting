@@ -53,7 +53,7 @@ We plan to create some kind of gamification of visualized data to make the users
 The datasets were already used by some websites and magazines, one of which is the magazine "[Petri-Heil](https://www.petri-heil.ch/)" which is very popular among fisher. They wrote an article about fish statistics up until the year 2016, which you can find [here](https://www.petri-heil.ch/index.php?cmspath=de/schweizer-fischerei-in-zahlen--723). In the article, various species' statistics are shown, especially the amount of perch, pike, and cisco caught in 2016 by professionals versus the amount caught by hobby fisher.
 However, the use cases of our datasets are rare, which suggests the novelty of our project with the purpose of shedding light on the fragile ecosystems of sweet water lakes in Switzerland.
 
-
+[This](https://www.aquaviva.ch/de/aktuelles/die-aussergewoehnliche-artenvielfalt-der-felchen-in-der-schweiz) website has some very interesting and good-looking plots which might help us for more specific ideas, such as a fish or lake map.
 
 ## Milestone 2 (18th April, 5pm)
 
