@@ -20,12 +20,14 @@ Please, fill the following sections about your project.
 ### Dataset
 
 We will mainly explore two datasets that both show the amount of fish caught (in kg) in the most popular lakes of Switzerland. The datasets show the catch amount per fish species, lake, and year. One dataset contains the amount of fish that professional fisher caught, one shows the amount of fish caught by hobby fisher.
-In addition to the amount of fish, the surface size of each lake is given in km2
+In addition to the amount of fish, the surface size of each lake is given in km2.
 
 In terms of data cleaning, since the datasets are taken from OpenSwissData, they are very clean already and can be used rightaway. Some species have missing numbers, but those are mostly the rarer species anyways. We will thus focus on the most popular fish species in Switzerland.
 
 [Professional fisher](https://opendata.swiss/fr/dataset/berufsfischerei-ertrag5)
 [Hobby fisher](https://opendata.swiss/fr/dataset/angelfischerei-ertrag6)
+
+A third [dataset](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken.assetdetail.32346388.html) that could potentially be used in our project shows the data related to the production and consumption of fish in Switzerland. However, the time spanned by the data is only covers the years from 2000 to 2023. Additionally, the years 2000-2006 and 2023 contain missing data.
 
 ### Problematic
 
