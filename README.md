@@ -66,6 +66,10 @@ Here can be seen some basic statistics of the amounts of caught Lake Trout beetw
 
 This shows that the amount varies a lot over the years for example in the Lake of Geneva (Genfersee).
 
+For the five lakes where the biggest amount of Lake trout was caught, we can see that in the Lake of Lucerne (Vierwaldstättersee), the numbers generally increased while in the Lake of Neuchatel (Neuenburgersee), the numbers decreased over the last view years.
+![image](https://github.com/user-attachments/assets/fba46232-85e1-463e-82d9-2a4a2c5326d6)
+
+
 ### Related work
 
 > - What others have already done with the data?
