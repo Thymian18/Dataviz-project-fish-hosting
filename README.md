@@ -45,6 +45,27 @@ We plan to create some kind of gamification of visualized data to make the users
 > Pre-processing of the data set you chose
 > - Show some basic statistics and get insights about the data
 
+Here can be seen some basic statistics of the amounts of caught Lake Trout beetween the years 2000 and 2021
+
+| Lake      | mean        | std         | min    | max         |
+| --------- | ----------- | ----------- | ------ | ----------- |
+| Genfersee | 3277.794091 | 1102.582145 | 1682.0 | 5695.000000 |
+| Neuenburgersee | 1694.772727 | 860.228703 | 509.0 | 3782.000000 |
+| Bodensee | 587.968182 | 210.661279 | 296.0 | 1168.000000 |
+| Vierwaldstättersee | 1175.136364 | 501.654529 | 244.0 | 2219.000000 |
+| Zürichsee | 811.751818 | 422.306054 | 242.0 | 1723.000000 |
+| Thunersee | 666.447359 | 806.938426 | 254.0 | 4236.141901 |
+| Lago Maggiore | 659.597727 | 297.418845 | 321.0 | 1432.000000 |
+| Bielersee | 21.700000 | 12.074018 | 3.0 | 46.000000 |
+| Luganersee | 325.665909 | 122.451733 | 169.0 | 628.000000 |
+| Brienzersee | 341.721817 | 357.306600 | 72.0 | 1831.079981 |
+| Walensee | 249.095909 | 63.312938 | 141.0 | 438.000000 |
+| Murtensee | 133.840909 | 86.789667 | 33.0 | 341.000000 |
+| Sempachersee | 4.954545 | 10.030797 | 0.0 | 36.000000 |
+| Hallwilersee | 6.306818 | 8.199859 | 0.0 | 32.000000 |
+
+This shows that the amount varies a lot over the years for example in the Lake of Geneva (Genfersee).
+
 ### Related work
 
 > - What others have already done with the data?
