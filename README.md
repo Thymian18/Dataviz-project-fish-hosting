@@ -34,8 +34,10 @@ A third [dataset](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-date
 
 During the 20th century, big amount of phosphate and other nutrients from detergents and fertilizers flowed into our lakes, causing excessive algae growth. That overpopulation of algae on the other hand led to a poverty of oxygen in the water and therefore a decline in fish populations.
 Another problem is the influence of invasive species on native species.
+
 We think that awareness about the fish populations, overfishing and destruction of habitats of certain species needs to be raised.
 With our project, we try to show the users in a fun and interactive way how the fish populations in Switzerland are evolving, which species are getting endangered, and which species are dominating others. The users should get a feeling of how things change deep down in our country's waters.
+
 Furthermore, users might learn new things about species that they have not known until now, such as which species live in which kinds of lakes.
 We plan to create some kind of gamification of visualized data to make the users stay on our website and want to learn more.
 
