@@ -43,6 +43,27 @@ def createTroutFrame(df_dict, year_interval):
     df_trouts.drop('Seeforelle', axis = 1, inplace = True)
     return df_trouts
 
+def createFishFrame(df_dict, year_interval, fishname):
+    # Initialize an empty DataFrame with "Lake" as the index
+    df_trouts = pd.DataFrame()
+    
+    # Get lakes from the most recent year available
+   
+    lakes = df_dict['2021'][['Lake', fishname]]
+    df_trouts = lakes.set_index("Lake")  # Set "Lake" as index
+
+    # Loop through each year and extract trout data
+    for i in range(year_interval[0], year_interval[1] + 1):
+        year = str(i)
+        if year in df_dict:  # Ensure year exists in dictionary
+            df = df_dict[year]
+            df_year = df.set_index("Lake")[fishname]  # Align by "Lake"
+            df_trouts[year] = df_year  # Add to dataframe
+
+    df_trouts = df_trouts.fillna(0)
+    df_trouts.reset_index(inplace = True)
+    df_trouts.drop(fishname, axis = 1, inplace = True)
+    return df_trouts
 
 
 
