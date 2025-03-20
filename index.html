@@ -11,7 +11,36 @@
         <h1>SAIBLING DEATHMATCH</h1>
     </header>
     <main>
-        <p>SELECT A CHAMPION AND THEIR ATTACK!</p>
+        <h2>SELECT A CHAMPION AND THEIR ATTACK!</h2>
+        <div class="selection-container">
+            <div class="selection-box">
+                <h3>Fish Card 1</h3>
+                <label for="fish1Select">Fish 1:</label>
+                <select id="fish1Select" onchange="updateSelection(1)">
+                    <option value="">Select Fish</option>
+                </select>
+                <label for="lake1Select">Lake 1:</label>
+                <select id="lake1Select" onchange="updateSelection(1)">
+                    <option value="">Select Lake</option>
+                </select>
+            </div>
+            <div class="selection-box">
+                <h3>Fish Card 2</h3>
+                <label for="fish2Select">Fish 2:</label>
+                <select id="fish2Select" onchange="updateSelection(2)">
+                    <option value="">Select Fish</option>
+                </select>
+                <label for="lake2Select">Lake 2:</label>
+                <select id="lake2Select" onchange="updateSelection(2)">
+                    <option value="">Select Lake</option>
+                </select>
+            </div>
+        </div>
+        <button id="startButton" onclick="startGame()" disabled>Start Game</button>
+        <h2>Yearly Battle</h2>
+        <p id="year">Year: -</p>
+        <p id="winner">Winner: -</p>
+        <script src="script.js"></script>
     </main>
     <footer>
         <p>© 2025 JAKOB & DAMIAN</p>

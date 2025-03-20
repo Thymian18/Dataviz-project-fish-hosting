@@ -1,19 +1,33 @@
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* Basic body styles */
 body {
-    line-height: 1.5;
-    font-family: Helvetics, sans-serif;
-    color: #DADADA;
-    background-color: #1d1c1c;
+    font-family: Arial, sans-serif;
+    text-align: center;
 }
 
+.card {
+    display: inline-block;
+    border: 1px solid #333;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
+}
 
-h1, h2, h3, h4, h5, h6 {
-    line-height: 1.25;
-    font-weight: bold;
+.winner {
+    background-color: lightgreen;
+}
 
+.loser {
+    background-color: lightcoral;
+}
+
+.selection-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 0;
+}
+
+.selection-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
