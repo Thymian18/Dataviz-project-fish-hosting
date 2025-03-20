@@ -1,0 +1,19 @@
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Basic body styles */
+body {
+    line-height: 1.5;
+    font-family: Helvetics, sans-serif;
+    color: #DADADA;
+    background-color: #1d1c1c;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.25;
+    font-weight: bold;
+
+}
