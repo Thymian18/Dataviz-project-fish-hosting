@@ -7,6 +7,7 @@
 let fishData = null;
 let selectedFish = [null, null];
 let selectedLake = [null, null];
+let currentScores = [0, 0];
 let currentYear = 2000;
 const endYear = 2002;
 
@@ -40,29 +41,52 @@ function updateSelection() {
     const lake2Value = document.getElementById("lake2Select").value;
     selectedLake[0] = lake1Value;
     selectedLake[1] = lake2Value;
-    document.getElementById("startButton").disabled = selectedFish[0] === null || selectedFish[1] === null || selectedLake[0] === null || selectedLake[1] === null;
+    document.getElementById("startButton").disabled = selectedFish[0] === '' || selectedFish[1] === '' || selectedLake[0] === '' || selectedLake[1] === '';
 }
 
 function startGame() {
-    if (selectedFish[0] === null || selectedFish[1] === null || selectedLake[0] == null || selectedLake[1] == null) return;
+    if (selectedFish[0] === '' || selectedFish[1] === '' || selectedLake[0] == '' || selectedLake[1] == '') return;
     currentYear = 2000;
-    iterateYears();
+    currentScores = [0, 0];
+
+    iterateYears(() => {
+        announceWinner();  // Call announceWinner() only after all years are processed
+    });
 }
 
-function iterateYears() {
-    if (currentYear > endYear) return;
+function iterateYears(callback) {
+    if (currentYear > endYear) {
+        callback();  // Call the callback when iteration is complete
+        return;
+    }
     
     const fish1 = fishData[selectedLake[0]][selectedFish[0]][currentYear] || 0;
     const fish2 = fishData[selectedLake[1]][selectedFish[1]][currentYear] || 0;
     
     document.getElementById("year").textContent = "Year: " + currentYear;
     if (fish1 > fish2) {
-        document.getElementById("winner").textContent = "Winner: " + selectedLake[0];
+        document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 1";
+        currentScores[0]++;
+        document.getElementById("score1").textContent = currentScores[0];
     } else {
-        document.getElementById("winner").textContent = "Winner: " + selectedLake[1];
+        document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 2";
+        currentScores[1]++;
+        document.getElementById("score2").textContent = currentScores[1];
     }
     currentYear++;
-    setTimeout(iterateYears, 5000);
+    setTimeout(() => iterateYears(callback), 5000); // Continue iterating until finished
+}
+
+function announceWinner() {
+    if (currentScores[0] > currentScores[1]) {
+        document.getElementById("winner").textContent = "Winner: Card 1";
+    }
+    else if (currentScores[0] < currentScores[1]) {
+        document.getElementById("winner").textContent = "Winner: Card 2";
+    }
+    else {
+        document.getElementById("winner").textContent = "Winner: Both!";
+    }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
