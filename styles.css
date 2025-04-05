@@ -1,6 +1,56 @@
-body {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
     font-family: Arial, sans-serif;
+}
+
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
     text-align: center;
+    width: 100%;
+}
+
+.section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    max-width: 1000px;
+}
+
+.scroll-arrow {
+    font-size: 2rem;
+    margin-top: 2rem;
+    display: inline-block;
+    animation: bounce 1s infinite;
+    text-decoration: none;
+    color: inherit;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(10px); }
 }
 
 .card {
@@ -30,4 +80,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#welcome {
+    background-color: #676af4;
+    color: #fffae9;
+}
+
+#battle-selection {
+    background-color: #ff6663;
+}
+
+#battle {
+    background-color: #011638;
+    color: #fffae9;
+}
+
+#information {
+    background-color: #ebebebff;
 }
