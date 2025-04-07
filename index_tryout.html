@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Great Saibling Deathmatch</title>
+
+  <!-- JetBrains Mono Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jockey+One&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles_tryout.css" />
+</head>
+<body>
+  <!-- ✅ YOUR LANDING PAGE STARTS HERE -->
+  <div class="layout">
+    <div class="top-bar">
+      THE GREAT SAIBLING DEATHMATCH!!
+    </div>
+    <div class="content-wrapper">
+      <div class="blue-box">
+        <p>
+          SELECT A <strong>CHAMPION</strong> AND<br />THEIR MAIN
+          <strong>ATTACK</strong>
+        </p>
+        <p>
+          & LET IT <strong>FIGHT</strong> AGAINST A<br />WORTHY OPPONENT!
+        </p>
+        <a href="#champion-selection">
+          <button class="select-btn">SELECT CHAMPION</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ✅ NEW PAGE SECTIONS BEGIN HERE -->
+  <section id="champion-selection" class="champion-selection">
+
+    <div class="layout">
+    <div class="header">CHOOSE YOUR CHAMPION!</div>
+    <div class="content">
+      <div class="left-panel">
+        <label for="fishSelect">SELECT FIGHTER:</label>
+        <select id="fishSelect">
+          <option disabled selected value="">-- Select Fish --</option>
+        </select>
+
+        <label for="lakeSelect">SELECT ATTACK:</label>
+        <select id="lakeSelect">
+          <option disabled selected value="">-- Select Lake --</option>
+        </select>
+        <a href="#battle">
+            <button class="arena-button">GO TO ARENA!</button>
+          </a>
+        
+      </div>
+      <div class="right-panel">
+        <div class="card" id="fishCard">
+          <h3 id="fishName">FISH</h3>
+          <img id="fishImage" src="" alt="Fish">
+          <div class="card-footer">
+            <span id="lakeName">Lake</span>
+            <span id="attackValue">0 KG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <section id="battle" class="battle">
+    <div class="section-content">
+      <main>
+        <h2>FIGHT!</h2>
+        <div class="score-board">
+          <h4 id="score1">Fish Card 1: 0</h4>
+          <h4 id="score2">Fish Card 2: 0</h4>
+        </div>
+        <p id="year">Year: -</p>
+        <p id="pointWinner"></p>
+        <p id="winner">Winner: </p>
+        <a href="#information" class="scroll-arrow">↓</a>
+      </main>
+    </div>
+  </section>
+
+  <section id="information">
+    <div class="section-content">
+      <p>...</p>
+      <footer>
+        <p>© 2025 JAKOB & DAMIAN</p>
+      </footer>
+    </div>
+  </section>
+
+  <script src="scriptTryout.js"></script>
+</body>
+</html>
+
+
+
+  
+   

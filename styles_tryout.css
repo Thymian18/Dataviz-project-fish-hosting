@@ -1,0 +1,266 @@
+
+:root {
+    --lightblue: #676AF4;
+    --darkblue: #011638;
+    --text-light: #FFFAE9;
+    --red: #FF6663;
+
+    --font-titles: 'JetBrains Mono', monospace;
+    --font-text: 'Inter', sans-serif;
+  }
+
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--font-text);
+  }
+  
+p {
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 35px);
+    text-align: left;
+    font-family: var(--font-text);
+}
+
+
+.layout {
+    height: 100vh;
+    width: 100vw;
+    background: url('assets/gradientbg.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.top-bar {
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    font-weight: 900;
+    font-size: clamp(2rem, 6vw, 80px);
+
+    font-family: var(--font-titles);
+    text-align: center;
+    padding: 40px 20px;
+    width: 80%;
+  }
+  
+  
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+  }
+  
+  .blue-box {
+    background-color: var(--darkblue);
+    color: var(--text-light);
+    width: 80%;
+    margin-left: auto;
+    padding: 80px 40px;
+    padding-top: 10%;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: normal;
+  }
+
+  .blue-box p {
+    padding-left: 20%; /* Adjust as needed */
+
+    text-align: left;   /* Optional: makes it left-aligned too */
+  }
+  
+  
+  .blue-box strong {
+    font-weight: bold;
+    transition: color 0.1s ease-in-out;
+  }
+
+  .blue-box strong:hover {
+    color: var(--red);
+  }
+  
+  
+  .select-btn {
+    margin-top: 40px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: transform 0.1s ease-in-out;
+
+  }
+  
+  .select-btn:hover {
+    background-color: var(--red);
+    transform: scale(1.2);
+  }
+  
+
+
+
+
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--font-text);
+    background-image: 'assets/gradientbg.png'
+  }
+
+  .layout {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(90deg, #dbe9f3 0%, #c5e0f5 50%, #e6e9f0 100%);
+  }
+
+  .header {
+    background-color: #676AF4;
+    color: white;
+    text-align: center;
+    font-family: var(--font-titles);
+    font-size: clamp(2rem, 5vw, 60px);
+    padding: 30px;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+  }
+
+  .left-panel {
+    background-color: var(--darkblue);
+    color: var(--text-light);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px;
+  }
+
+  .left-panel label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 20px 0 5px;
+  }
+
+  .left-panel select {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    background-color: var(--darkblue);
+    color: var(--text-light);
+    border: 1px solid #ccc;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: 'assets/gradientbg.png';
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 12px 8px;
+    padding-right: 2rem;
+  }
+
+  .arena-button {
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    font-weight: bold;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    width: fit-content;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
+  }
+
+  .arena-button:hover {
+    background-color: var(--red);
+    transform: scale(1.1);
+  }
+
+  .right-panel {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+  }
+
+  .card {
+    width: 250px;
+    height: 350px;
+    border-radius: 30px;
+    background: url('assets/emptyCards/card_empty_4.png') center center / cover no-repeat;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /*padding: 20px;*/
+    font-family: var(--font-titles);
+    text-align: center;
+    position: relative;
+    box-sizing: border-box;
+    transition: transform 0.1s ease-in-out;
+    transform: rotate(7deg);
+
+}
+
+.card:hover {
+
+transform: scale(1.2);
+box-shadow: 0 50px 60px rgba(0, 0, 0, 0.25);
+}
+
+
+.card img {
+width: 200px;
+height: 180px;
+border-radius: 20px;
+position: absolute;
+left: 26px;   /* x = 25 */
+top: 50px;    /* y = 50 */
+}
+
+  .card h3 {
+      position: absolute;
+      top: 10px;
+      left: 26px; 
+      font-size: 1.5rem;
+      margin: 0;
+      color: var(--darkblue);
+
+  }
+
+  .card-footer {
+    left: 26px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    position: absolute;
+    top: 300px;
+  }
+
+  .card-footer span {
+    color: var(--darkblue);
+    font-weight: bold;
+  }
