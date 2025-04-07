@@ -1,0 +1,103 @@
+
+:root {
+    --lightblue: #676AF4;
+    --darkblue: #011638;
+    --text-light: #FFFAE9;
+    --red: #FF6663;
+
+    --font-titles: 'JetBrains Mono', monospace;
+    --font-text: 'Inter', sans-serif;
+  }
+  
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: var(--font-text);
+  }
+  
+p {
+    font-weight: 300;
+    font-size: clamp(2rem, 4vw, 35px);
+    text-align: left;
+}
+
+
+.layout {
+    height: 100vh;
+    width: 100vw;
+    background: url('assets/gradientbg.png') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  
+.top-bar {
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    font-weight: 900;
+    font-size: clamp(2rem, 6vw, 80px);
+
+    font-family: var(--font-titles);
+    text-align: center;
+    padding: 40px 20px;
+    width: 80%;
+  }
+  
+  
+  .content-wrapper {
+    display: flex;
+    flex: 1;
+  }
+  
+  .blue-box {
+    background-color: var(--darkblue);
+    color: var(--text-light);
+    width: 80%;
+    margin-left: auto;
+    padding: 80px 40px;
+    padding-top: 10%;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: normal;
+  }
+
+  .blue-box p {
+    padding-left: 20%; /* Adjust as needed */
+
+    text-align: left;   /* Optional: makes it left-aligned too */
+  }
+  
+  
+  .blue-box strong {
+    font-weight: bold;
+    transition: color 0.1s ease-in-out;
+  }
+
+  .blue-box strong:hover {
+    color: var(--red);
+  }
+  
+  
+  .select-btn {
+    margin-top: 40px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: transform 0.1s ease-in-out;
+
+  }
+  
+  .select-btn:hover {
+    background-color: var(--red);
+    transform: scale(1.2);
+  }
+  
