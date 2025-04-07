@@ -80,7 +80,7 @@ function iterateYears(callback) {
         document.getElementById("score2").textContent = "Fish Card 2: " + currentScores[1];
     }
     currentYear++;
-    setTimeout(() => iterateYears(callback), 5000); // Continue iterating until finished
+    setTimeout(() => iterateYears(callback), 1000); // Continue iterating until finished
 }
 
 function announceWinner() {

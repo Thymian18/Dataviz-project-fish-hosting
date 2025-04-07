@@ -21,6 +21,7 @@ p {
     font-weight: 300;
     font-size: clamp(2rem, 4vw, 35px);
     text-align: left;
+    font-family: var(--font-text);
 }
 
 
