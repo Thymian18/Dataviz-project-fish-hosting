@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
     <link rel="stylesheet" href="styles.css">
     <title>SAIBLING DEATHMATCH</title>
 </head>
@@ -45,13 +50,10 @@
                         </select>
                     </div>
                 </div>
-                <div class="score-board">
-                    <h4 id="score1">0</h4>
-                    <h4 id="score2">0</h4>
-                </div>
+                
                 <button id="startButton" disabled>Start Game</button>
             
-                <a href="#battle" class="scroll-arrow">↓</a>
+                <!-- <a href="#battle" class="scroll-arrow">↓</a> -->
             </main>
         </div>
     </section>
@@ -60,6 +62,10 @@
         <div class="section-content">
             <main>
                 <h2>FIGHT!</h2>
+                <div class="score-board">
+                    <h4 id="score1">Fish Card 1: 0</h4>
+                    <h4 id="score2">Fish Card 2: 0</h4>
+                </div>
                 <p id="year">Year: -</p>
                 <p id="pointWinner"></p>
                 <p id="winner">Winner: </p>

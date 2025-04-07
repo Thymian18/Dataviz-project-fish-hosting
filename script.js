@@ -49,6 +49,12 @@ function startGame() {
     currentYear = 2000;
     currentScores = [0, 0];
 
+    // window.location.hash = '#battle';
+    const battleSection = document.getElementById("battle");
+    if (battleSection) {
+      battleSection.scrollIntoView({ behavior: "smooth" });
+    }
+
     iterateYears(() => {
         announceWinner();  // Call announceWinner() only after all years are processed
     });
@@ -67,11 +73,11 @@ function iterateYears(callback) {
     if (fish1 > fish2) {
         document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 1";
         currentScores[0]++;
-        document.getElementById("score1").textContent = currentScores[0];
+        document.getElementById("score1").textContent = "Fish Card 1: " + currentScores[0];
     } else {
         document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 2";
         currentScores[1]++;
-        document.getElementById("score2").textContent = currentScores[1];
+        document.getElementById("score2").textContent = "Fish Card 2: " + currentScores[1];
     }
     currentYear++;
     setTimeout(() => iterateYears(callback), 5000); // Continue iterating until finished
@@ -97,7 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
             populateCardDropdowns(fishData);
         })
         .catch(error => console.error('Error fetching JSON:', error));
-    document.getElementById("startButton").addEventListener("click", startGame);
+
+    const startButton = document.getElementById("startButton");
+    startButton.addEventListener("click", startGame);
 
     document.getElementById("fish1Select").addEventListener("change", updateSelection);
     document.getElementById("fish2Select").addEventListener("change", updateSelection);
