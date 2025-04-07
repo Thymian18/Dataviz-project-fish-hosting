@@ -123,7 +123,15 @@
       text-align: center;
       position: relative;
       box-sizing: border-box;
-    }
+      transition: transform 0.1s ease-in-out;
+
+}
+
+.card:hover {
+
+  transform: scale(1.2);
+}
+
 
 .card img {
   width: 200px;
@@ -191,6 +199,17 @@
   </div>
 
   <script>
+    const cardBackgrounds = [
+    'assets/emptyCards/card_empty_1.png',
+    'assets/emptyCards/card_empty_2.png',
+    'assets/emptyCards/card_empty_3.png',
+    'assets/emptyCards/card_empty_4.png',
+    'assets/emptyCards/card_empty_5.png',
+    'assets/emptyCards/card_empty_6.png'
+    ];
+
+
+
     const fishSelect = document.getElementById("fishSelect");
     const lakeSelect = document.getElementById("lakeSelect");
     const fishImage = document.getElementById("fishImage");
@@ -232,6 +251,10 @@
     }
 
     function updateCard(fish, lake) {
+      const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
+      document.getElementById("fishCard").style.backgroundImage = `url('${randomBg}')`;
+
+
       const lakeData = fishData[fish].find(entry => entry.Lake === lake);
       fishImage.src = `assets/fish/${fish}.png`;
       fishName.textContent = fish.toUpperCase();

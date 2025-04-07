@@ -4,32 +4,182 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Great Saibling Deathmatch</title>
-
-  <!-- JetBrains Mono Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jockey+One&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&family=Inter:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --lightblue: #676AF4;
+      --darkblue: #011638;
+      --text-light: #FFFAE9;
+      --red: #FF6663;
+      --font-titles: 'JetBrains Mono', monospace;
+      --font-text: 'Inter', sans-serif;
+    }
 
-  <link rel="stylesheet" href="assettest.css" />
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: var(--font-text);
+    }
+
+    .layout {
+      height: 100vh;
+      width: 100vw;
+      background: url('assets/gradientbg.png') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-bar {
+      background-color: var(--lightblue);
+      color: var(--text-light);
+      font-weight: 900;
+      font-size: clamp(2rem, 6vw, 80px);
+      font-family: var(--font-titles);
+      text-align: center;
+      padding: 40px 20px;
+      width: 80%;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex: 1;
+    }
+
+    .blue-box {
+      background-color: var(--darkblue);
+      color: var(--text-light);
+      width: 80%;
+      margin-left: auto;
+      padding: 80px 40px;
+      padding-top: 10%;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: normal;
+    }
+
+    .blue-box p {
+      padding-left: 20%;
+      text-align: left;
+    }
+
+    .blue-box strong {
+      font-weight: bold;
+      transition: color 0.1s ease-in-out;
+    }
+
+    .blue-box strong:hover {
+      color: var(--red);
+    }
+
+    .select-btn {
+      margin-top: 40px;
+      padding: 12px 28px;
+      font-size: 1rem;
+      background-color: var(--lightblue);
+      color: var(--text-light);
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    .select-btn:hover {
+      background-color: var(--red);
+      transform: scale(1.2);
+    }
+
+    .champion-selection {
+      display: flex;
+      padding: 60px;
+      background: #f0f4f8;
+    }
+
+    .champion-left, .champion-right {
+      width: 50%;
+    }
+
+    .champion-left label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .champion-left select {
+      padding: 8px;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+
+    .fish-card {
+      width: 250px;
+      height: 350px;
+      border-radius: 30px;
+      background: url('assets/emptyCards/card_empty_1.png') center center / cover no-repeat;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-titles);
+      text-align: center;
+      position: relative;
+      box-sizing: border-box;
+      transition: transform 0.1s ease-in-out;
+    }
+
+    .fish-card:hover {
+      transform: scale(1.2);
+    }
+
+    .fish-card-header {
+      position: absolute;
+      top: 10px;
+      left: 26px;
+      font-size: 1.5rem;
+      color: var(--darkblue);
+    }
+
+    .fish-image-wrapper {
+      position: absolute;
+      top: 50px;
+      left: 26px;
+    }
+
+    .fish-image {
+      width: 200px;
+      height: 180px;
+      border-radius: 20px;
+    }
+
+    .fish-card-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 26px;
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .label {
+      font-weight: bold;
+      color: var(--darkblue);
+    }
+  </style>
 </head>
 <body>
-  <!-- ✅ YOUR LANDING PAGE STARTS HERE -->
   <div class="layout">
-    <div class="top-bar">
-      THE GREAT SAIBLING DEATHMATCH!!
-    </div>
+    <div class="top-bar">THE GREAT SAIBLING DEATHMATCH!!</div>
     <div class="content-wrapper">
       <div class="blue-box">
-        <p>
-          SELECT A <strong>CHAMPION</strong> AND<br />THEIR MAIN
-          <strong>ATTACK</strong>
-        </p>
-        <p>
-          & LET IT <strong>FIGHT</strong> AGAINST A<br />WORTHY OPPONENT!
-        </p>
+        <p>SELECT A <strong>CHAMPION</strong> AND<br />THEIR MAIN <strong>ATTACK</strong></p>
+        <p>& LET IT <strong>FIGHT</strong> AGAINST A<br />WORTHY OPPONENT!</p>
         <a href="#battle-selection">
           <button class="select-btn">SELECT CHAMPION</button>
         </a>
@@ -37,66 +187,107 @@
     </div>
   </div>
 
-  <!-- ✅ NEW PAGE SECTIONS BEGIN HERE -->
-  <section id="battle-selection">
-    <div class="section-content">
-      <main>
-        <h2>SELECT A CHAMPION AND THEIR ATTACK!</h2>
-        <div class="selection-container">
-          <div class="selection-box">
-            <h3>Fish Card 1</h3>
-            <label for="lake1Select">Lake 1:</label>
-            <select id="lake1Select">
-              <option value="">Select Lake</option>
-            </select>
-            <label for="fish1Select">Fish 1:</label>
-            <select id="fish1Select">
-              <option value="">Select Fish</option>
-            </select>
+  <section class="champion-selection" id="battle-selection">
+    <div class="champion-left">
+      <h2>CHOOSE YOUR CHAMPION</h2>
+      <label for="fighterSelect">SELECT FISH</label>
+      <select id="fighterSelect"></select>
+      <label for="attackSelect">SELECT LAKE</label>
+      <select id="attackSelect"></select>
+      <button class="select-btn" onclick="updateCard()">GO TO ARENA!</button>
+    </div>
+    <div class="champion-right">
+      <div class="fish-card" id="dynamicCard">
+        <div class="fish-card-header" id="fish-name">-</div>
+        <div class="fish-image-wrapper">
+          <img id="fish-img" class="fish-image" src="" alt="Fish" />
+        </div>
+        <div class="fish-card-footer">
+          <div class="fish-attack">
+            <span class="label">ATTACK</span>
+            <span id="lake-name">-</span>
           </div>
-          <div class="selection-box">
-            <h3>Fish Card 2</h3>
-            <label for="lake2Select">Lake 2:</label>
-            <select id="lake2Select">
-              <option value="">Select Lake</option>
-            </select>
-            <label for="fish2Select">Fish 2:</label>
-            <select id="fish2Select">
-              <option value="">Select Fish</option>
-            </select>
+          <div class="fish-damage">
+            <span class="label">AVERAGE DAMAGE</span>
+            <span id="avg-damage">-</span>
           </div>
         </div>
-
-        <button id="startButton" disabled class="select-btn">Start Game</button>
-      </main>
+      </div>
     </div>
   </section>
 
-  <section id="battle">
-    <div class="section-content">
-      <main>
-        <h2>FIGHT!</h2>
-        <div class="score-board">
-          <h4 id="score1">Fish Card 1: 0</h4>
-          <h4 id="score2">Fish Card 2: 0</h4>
-        </div>
-        <p id="year">Year: -</p>
-        <p id="pointWinner"></p>
-        <p id="winner">Winner: </p>
-        <a href="#information" class="scroll-arrow">↓</a>
-      </main>
-    </div>
-  </section>
+  <script>
+    const fishSelect = document.getElementById("fighterSelect");
+    const lakeSelect = document.getElementById("attackSelect");
+    const fishImgElem = document.getElementById("fish-img");
+    const fishNameElem = document.getElementById("fish-name");
+    const lakeNameElem = document.getElementById("lake-name");
+    const avgDamageElem = document.getElementById("avg-damage");
+    const cardElem = document.getElementById("dynamicCard");
 
-  <section id="information">
-    <div class="section-content">
-      <p>...</p>
-      <footer>
-        <p>© 2025 JAKOB & DAMIAN</p>
-      </footer>
-    </div>
-  </section>
+    const backgrounds = [
+      'assets/emptyCards/card_empty_1.png',
+      'assets/emptyCards/card_empty_2.png',
+      'assets/emptyCards/card_empty_3.png',
+      'assets/emptyCards/card_empty_4.png',
+      'assets/emptyCards/card_empty_5.png',
+      'assets/emptyCards/card_empty_6.png'
+    ];
 
-  <script src="script.js"></script>
+    let fishData = {};
+
+    fetch("data/commercialFishing.json")
+      .then(res => res.json())
+      .then(data => {
+        fishData = data;
+        populateDropdowns();
+      });
+
+    function populateDropdowns() {
+      const fishNames = Object.keys(fishData);
+      fishNames.forEach(fish => {
+        const option = document.createElement("option");
+        option.value = fish;
+        option.textContent = fish;
+        fishSelect.appendChild(option);
+      });
+
+      const lakeSet = new Set();
+      fishNames.forEach(fish => {
+        fishData[fish].forEach(entry => lakeSet.add(entry.Lake));
+      });
+
+      [...lakeSet].forEach(lake => {
+        const option = document.createElement("option");
+        option.value = lake;
+        option.textContent = lake;
+        lakeSelect.appendChild(option);
+      });
+    }
+
+    function calculateAverage(data) {
+      const years = Object.keys(data).filter(k => k !== "Lake");
+      const values = years.map(k => parseFloat(data[k])).filter(v => !isNaN(v));
+      return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+    }
+
+    function updateCard() {
+      const fish = fishSelect.value;
+      const lake = lakeSelect.value;
+      fishNameElem.textContent = fish || "-";
+      lakeNameElem.textContent = lake || "-";
+
+      if (fish && lake) {
+        const entry = fishData[fish].find(e => e.Lake === lake);
+        if (!entry) return;
+
+        avgDamageElem.textContent = `${calculateAverage(entry)} KG`;
+        fishImgElem.src = `assets/fish/${fish}.png`;
+
+        const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+        cardElem.style.backgroundImage = `url('${randomBg}')`;
+      }
+    }
+  </script>
 </body>
 </html>
