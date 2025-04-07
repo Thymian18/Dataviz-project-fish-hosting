@@ -77,17 +77,45 @@
     <div class="section-content">
       <main>
         <h2>FIGHT!</h2>
-        <div class="score-board">
-          <h4 id="score1">Fish Card 1: 0</h4>
-          <h4 id="score2">Fish Card 2: 0</h4>
+        <div class="card-battle-wrapper">
+          <div class="card" id="card1">
+            <h3 id="fishName">FISH</h3>
+            <img id="fishImage" src="" alt="Fish" />
+            <div class="card-footer">
+              <span id="lakeName">Lake</span>
+              <span id="attackValue">0 KG</span>
+            </div>
+          </div>
+  
+          <div class="vs">VS.</div>
+  
+          <div class="card" id="card2">
+            <h3 id="fishName2">FISH</h3>
+            <img id="fishImage2" src="" alt="Fish" />
+            <div class="card-footer">
+              <span id="lakeName2">Lake</span>
+              <span id="attackValue2">0 KG</span>
+            </div>
+          </div>
         </div>
-        <p id="year">Year: -</p>
-        <p id="pointWinner"></p>
-        <p id="winner">Winner: </p>
-        <a href="#information" class="scroll-arrow">↓</a>
+  
+        <button class="arena-button" onclick="startBattle()">FIGHT!!!</button>
+  
+        <div class="result-display">
+          <div class="left-result">
+            <p>YOUR CHAMPION</p>
+            <h2 id="winnerName">-</h2>
+            <p id="winnerStatement">WINS WITH X POINTS!</p>
+          </div>
+          <div class="right-result">
+            <p><strong id="fish1Name">-</strong> <span id="score1">0</span></p>
+            <p><strong id="fish2Name">-</strong> <span id="score2">0</span></p>
+          </div>
+        </div>
       </main>
     </div>
   </section>
+  
 
   <section id="information">
     <div class="section-content">

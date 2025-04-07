@@ -84,35 +84,3 @@ function updateCard() {
     }
 
 
-    // --------------- NEW  -----------
-    
-    function calculateAverage(data) {
-      const years = Object.keys(data).filter(key => key !== "Lake");
-      const values = years.map(y => parseFloat(data[y])).filter(v => !isNaN(v));
-      const avg = values.reduce((a, b) => a + b, 0) / values.length;
-      return Math.round(avg * 10) / 10;
-    }
-
-    function updateCard(fish, lake) {
-      const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
-      document.getElementById("fishCard").style.backgroundImage = `url('${randomBg}')`;
-
-
-      const lakeData = fishData[fish].find(entry => entry.Lake === lake);
-      fishImage.src = `assets/fish/${fish}.png`;
-      fishName.textContent = fish.toUpperCase();
-      lakeName.textContent = lake.toUpperCase();
-      attackValue.textContent = `${calculateAverage(lakeData)} KG`;
-    }
-
-    fishSelect.addEventListener("change", () => {
-      if (fishSelect.value && lakeSelect.value) {
-        updateCard(fishSelect.value, lakeSelect.value);
-      }
-    });
-
-    lakeSelect.addEventListener("change", () => {
-      if (fishSelect.value && lakeSelect.value) {
-        updateCard(fishSelect.value, lakeSelect.value);
-      }
-    });
