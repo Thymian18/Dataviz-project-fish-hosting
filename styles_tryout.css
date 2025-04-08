@@ -258,10 +258,11 @@ top: 50px;    /* y = 50 */
     font-size: 0.9rem;
     position: absolute;
     top: 300px;
+    
   }
 
   .card-footer span {
-    color: var(--darkblue);
+    color: var(--lightblue);
     font-weight: bold;
   }
 
