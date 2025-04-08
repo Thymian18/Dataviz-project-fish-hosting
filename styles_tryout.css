@@ -51,6 +51,21 @@ p {
     padding: 40px 20px;
     width: 80%;
   }
+
+  .top-bar-2 {
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    font-weight: 900;
+    font-size: clamp(2rem, 6vw, 80px);
+    
+    font-family: var(--font-titles);
+    text-align: center;
+    padding: 40px 20px;
+    width: 80%;
+    margin-left: auto;
+
+  }
+  
   
   
   .content-wrapper {
@@ -68,10 +83,11 @@ p {
     text-align: center;
     font-size: 1.25rem;
     font-weight: normal;
+    
   }
 
   .blue-box p {
-    padding-left: 20%; /* Adjust as needed */
+    padding-left: 30%; /* Adjust as needed */
 
     text-align: left;   /* Optional: makes it left-aligned too */
   }
@@ -84,47 +100,42 @@ p {
 
   .blue-box strong:hover {
     color: var(--red);
+    transform: rotate(7deg);
   }
   
   
   .select-btn {
     margin-top: 40px;
     padding: 12px 28px;
+  
     font-size: 1rem;
     background-color: var(--lightblue);
     color: var(--text-light);
     border: none;
     border-radius: 20px;
     font-weight: bold;
-    cursor: pointer;
-
+    cursor: crosshair;
+  
     transition: transform 0.1s ease-in-out;
-
+  
+    position: relative;
+    left: 40%;
+    transform: translateX(-40%);
   }
+  
   
   .select-btn:hover {
     background-color: var(--red);
-    transform: scale(1.2);
+    transform: scale(1.1) translateX(-40%);
   }
   
-
-
-
-
-  body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    font-family: var(--font-text);
-    background-image: 'assets/gradientbg.png'
-  }
-
   .layout {
     height: 100vh;
     width: 100vw;
     display: flex;
     flex-direction: column;
-    background: linear-gradient(90deg, #dbe9f3 0%, #c5e0f5 50%, #e6e9f0 100%);
+    /*background: linear-gradient(90deg, #dbe9f3 0%, #c5e0f5 50%, #e6e9f0 100%);*/
+    background-image: 'assets/gradientbg.png'
   }
 
   .header {
@@ -144,11 +155,13 @@ p {
   .left-panel {
     background-color: var(--darkblue);
     color: var(--text-light);
-    width: 50%;
+    width: 66%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center; 
     padding: 60px;
+  
   }
 
   .left-panel label {
@@ -221,23 +234,17 @@ p {
     box-sizing: border-box;
     transition: transform 0.1s ease-in-out;
     transform: rotate(7deg);
-
-}
-
-.card:hover {
-
-transform: scale(1.2);
-box-shadow: 0 50px 60px rgba(0, 0, 0, 0.25);
+    
 }
 
 
 .card img {
-width: 200px;
-height: 180px;
-border-radius: 20px;
-position: absolute;
-left: 26px;   /* x = 25 */
-top: 50px;    /* y = 50 */
+  width: 200px;
+  height: 180px;
+  border-radius: 20px;
+  position: absolute;
+  left: 26px;   /* x = 25 */
+  top: 50px;    /* y = 50 */
 }
 
   .card h3 {
@@ -274,19 +281,12 @@ top: 50px;    /* y = 50 */
     margin: 40px 0;
   }
   
-  .card {
-    width: 250px;
-    height: 350px;
-    border-radius: 30px;
-    background: center center / cover no-repeat;
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-    position: relative;
-    font-family: var(--font-titles);
-    transition: transform 0.2s ease-in-out;
-  }
+ 
   
   .card:hover {
     transform: scale(1.1);
+    box-shadow: 0 50px 60px rgba(60, 50, 50, 0.286);
+    
   }
   
   .card h3 {
@@ -318,6 +318,47 @@ top: 50px;    /* y = 50 */
     color: var(--darkblue);
     font-weight: bold;
   }
+
+
+
+  .card-wrapper {
+    position: relative;
+    width: 588px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card-background {
+    position: absolute;
+    width: 588px;
+    height: 350px;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+    transform: scale(1.1) translateX(-5px);
+    
+    }
+  
+  .card-wrapper:hover .card-background {
+    opacity: 1;
+  }
+  
+  .card {
+    z-index: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+    box-shadow: 0 50px 60px rgba(60, 50, 50, 0.286);
+  }
+  
+
+
+
   
   .vs {
     font-size: 2rem;
@@ -330,7 +371,8 @@ top: 50px;    /* y = 50 */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #676AF4 50%, #FF6663 50%);
+    /*background: linear-gradient(to right, #676AF4 50%, #FF6663 50%);*/
+    background-image: 'assets/gradientbg.png';
     padding: 30px;
     color: white;
     font-family: var(--font-titles);
