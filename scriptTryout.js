@@ -75,3 +75,56 @@ function updateCard() {
 // ✅ Correct event listeners
 fishSelect.addEventListener("change", updateCard);
 lakeSelect.addEventListener("change", updateCard);
+
+
+
+// BATTLE CARDS
+
+// Copies the selected champion info to the left battle card
+function copyChampionToBattleCard() {
+  // Copy values from the selection card
+  const selectedFishName = fishName.textContent;
+  const selectedLake = lakeName.textContent;
+  const selectedAttack = attackValue.textContent;
+  const selectedImage = fishImage.src;
+  const selectedBg = document.getElementById("fishCard").style.backgroundImage;
+
+  // Apply to battle card 1
+  document.getElementById("card1").style.backgroundImage = selectedBg;
+  document.querySelector("#card1 h3").textContent = selectedFishName;
+  document.querySelector("#card1 img").src = selectedImage;
+  document.querySelector("#card1 .card-footer span:nth-child(1)").textContent = selectedLake;
+  document.querySelector("#card1 .card-footer span:nth-child(2)").textContent = selectedAttack;
+}
+
+
+function getRandomFishAndLake() {
+  const fishList = Object.keys(fishData);
+  const randomFish = fishList[Math.floor(Math.random() * fishList.length)];
+  const lakeEntries = fishData[randomFish];
+  const randomLakeEntry = lakeEntries[Math.floor(Math.random() * lakeEntries.length)];
+  return {
+    fish: randomFish,
+    lake: randomLakeEntry.Lake,
+    data: randomLakeEntry
+  };
+}
+
+function updateRightBattleCard() {
+  const { fish, lake, data } = getRandomFishAndLake();
+  const average = calculateAverage(data);
+  const formattedFishName = fish.replaceAll(" ", "_").toLowerCase();
+  const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
+
+  const card2 = document.getElementById("card2");
+  card2.style.backgroundImage = `url('${randomBg}')`;
+  document.querySelector("#card2 h3").textContent = fish.toUpperCase();
+  document.querySelector("#card2 img").src = `assets/fish/${formattedFishName}.png`;
+  document.querySelector("#card2 .card-footer span:nth-child(1)").textContent = lake.toUpperCase();
+  document.querySelector("#card2 .card-footer span:nth-child(2)").textContent = `${average} KG`;
+}
+
+function prepareBattle() {
+  copyChampionToBattleCard();
+  updateRightBattleCard();
+}
