@@ -1,0 +1,163 @@
+<section class="battle">
+    <div class="card-battle-wrapper">
+      <div class="card card-left">
+        <h3 class="card-title">SEEFORELLE</h3>
+        <div class="card-image">
+          <img src="assets/fish/seeforelle.png" alt="Seeforelle">
+        </div>
+        <div class="card-info">
+          <span class="card-label">ATTACK</span>
+          <span class="card-value">HALWILERSEE</span>
+          <span class="card-label">AVERAGE DAMAGE</span>
+          <span class="card-value">300 KG</span>
+        </div>
+      </div>
+  
+      <div class="vs-text">VS.</div>
+  
+      <div class="card card-right">
+        <h3 class="card-title">AAL</h3>
+        <div class="card-image">
+          <img src="assets/fish/aal.png" alt="Aal">
+        </div>
+        <div class="card-info">
+          <span class="card-label">ATTACK</span>
+          <span class="card-value">ZUGERSEE</span>
+          <span class="card-label">AVERAGE DAMAGE</span>
+          <span class="card-value">210 KG</span>
+        </div>
+      </div>
+    </div>
+  
+    <button class="fight-button">FIGHT!!!</button>
+  
+    <div class="battle-results">
+      <div class="result-left">
+        <p>YOUR CHAMPION</p>
+        <h2>SEEFORELLE</h2>
+        <p>WINS WITH 21 POINTS!</p>
+      </div>
+      <div class="result-right">
+            <div class="score-row">
+            <span class="label">FORELLE</span>
+          <span class="score">21</span>
+        </div>
+        <div class="score-row">
+          <span class="label">AAL</span>
+          <span class="score">12</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+  /* ===== BATTLE SECTION STYLING ===== */
+.battle {
+  background: url('assets/gradientbg.png') center center / cover no-repeat;
+  padding: 60px 40px;
+  font-family: 'Jockey One', sans-serif;
+  color: #011638;
+}
+
+/* ==== CARD LAYOUT ==== */
+.card-battle-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+
+
+#lakeName,
+#lakeName2 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #676AF4;
+}
+
+#card2 #lakeName2 {
+  color: #FF6663;
+}
+
+#attackValue,
+#attackValue2 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #676AF4;
+}
+
+#card2 #attackValue2 {
+  color: #FF6663;
+}
+
+/* ==== VS TEXT ==== */
+.vs {
+  font-family: 'Jolly Lodger', cursive;
+  font-size: 32px;
+  color: #FF6663;
+  align-self: center;
+}
+
+/* ==== FIGHT BUTTON ==== */
+.arena-button {
+  display: block;
+  margin: 0 auto 60px;
+  background-color: #011638;
+  color: #FFFAE9;
+  font-size: 30px;
+  font-family: 'Jockey One', sans-serif;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+}
+
+/* ==== RESULTS DISPLAY ==== */
+.result-display {
+  display: flex;
+  width: 100%;
+  height: 334px;
+  margin-top: 40px;
+  font-family: 'Jockey One', sans-serif;
+}
+
+.left-result {
+  flex: 2;
+  background-color: #676AF4;
+  color: #FFFAE9;
+  padding: 60px;
+  font-size: 30px;
+}
+
+.left-result h2 {
+  font-size: 45px;
+  margin: 10px 0;
+}
+
+.right-result {
+  flex: 1;
+  background-color: #FF6663;
+  color: #FFFAE9;
+  padding: 60px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.right-result p {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30px;
+}
+
+.right-result span {
+  font-size: 45px;
+  color: #011638;
+  font-weight: bold;
+}

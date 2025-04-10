@@ -13,7 +13,12 @@
     rel="stylesheet"
   />
 
+  <!-- Funky Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jockey+One&family=Jolly+Lodger&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles_tryout.css" />
+  
 </head>
 <body>
   <!-- ✅ YOUR LANDING PAGE STARTS HERE -->
@@ -77,12 +82,13 @@
     </div>
   </section>
   
-
   <section id="battle" class="battle">
+
     <div class="section-content">
       <main>
-        <h2>FIGHT!</h2>
+    
         <div class="card-battle-wrapper">
+          
           <div class="card" id="card1">
             <h3 id="fishName">FISH</h3>
             <img id="fishImage" src="" alt="Fish" />
@@ -91,9 +97,12 @@
               <span id="attackValue">0 KG</span>
             </div>
           </div>
-  
-          <div class="vs">VS.</div>
-  
+          
+          <div class="middle-battle-card-stuff">
+            <div class="vs">VS.</div>
+            <button class="arena-button" onclick="startBattle()">FIGHT!!!</button>
+          </div>
+
           <div class="card" id="card2">
             <h3 id="fishName2">FISH</h3>
             <img id="fishImage2" src="" alt="Fish" />
@@ -103,15 +112,19 @@
             </div>
           </div>
         </div>
-  
-        <button class="arena-button" onclick="startBattle()">FIGHT!!!</button>
-  
+        
+        
+
+    
+    
         <div class="result-display">
+
           <div class="left-result">
             <p>YOUR CHAMPION</p>
             <h2 id="winnerName">-</h2>
             <p id="winnerStatement">WINS WITH X POINTS!</p>
           </div>
+
           <div class="right-result">
             <p><strong id="fish1Name">-</strong> <span id="score1">0</span></p>
             <p><strong id="fish2Name">-</strong> <span id="score2">0</span></p>
@@ -119,6 +132,9 @@
         </div>
       </main>
     </div>
+
+    <div class="battle-plot-segment"></div>
+
   </section>
   
 
