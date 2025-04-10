@@ -29,17 +29,17 @@ p {
     font-family: var(--font-text);
 }
 
-
-.layout {
-    height: 100vh;
+  
+  .layout {
+    height: calc(var(--vh, 1vh) * 100);
     width: 100vw;
-    background: url('assets/gradientbg.png') no-repeat center center;
-    background-size: cover;
-    position: relative;
     display: flex;
     flex-direction: column;
+    background: url('assets/gradientbg.png') no-repeat center center;
   }
   
+
+
 .top-bar {
     background-color: var(--lightblue);
     color: var(--text-light);
