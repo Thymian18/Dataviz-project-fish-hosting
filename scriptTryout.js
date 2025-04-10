@@ -10,18 +10,28 @@ const cardBackgrounds = [
 const fishSelect = document.getElementById("fishSelect");
 const lakeSelect = document.getElementById("lakeSelect");
 const fishImage = document.getElementById("fishImage");
-const fishName = document.getElementById("fishName");
-const lakeName = document.getElementById("lakeName");
-const attackValue = document.getElementById("attackValue");
+const fish1Name = document.getElementById("fishName");
+const lake1Name = document.getElementById("lakeName");
+const attack1Value = document.getElementById("attackValue");
+
+let fish2Name = "";
+let lake2name = "";
 
 let fishData = {};
 
-fetch("data/commercialFishing.json")
-  .then(res => res.json())
-  .then(data => {
-    fishData = data;
-    populateDropdowns(data);
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("data/commercialFishing.json")
+    .then(res => res.json())
+    .then(data => {
+      fishData = data;
+      populateDropdowns(data);
+    })
+    .catch(error => console.error('Error fetching JSON:', error));
+
+  // ✅ Correct event listeners
+  fishSelect.addEventListener("change", updateCard);
+  lakeSelect.addEventListener("change", updateCard);
+});
 
 function populateDropdowns(data) {
   Object.keys(data).forEach(fish => {
@@ -51,30 +61,28 @@ function updateCard() {
   const fish = fishSelect.value;
   const lake = lakeSelect.value;
 
-  fishName.textContent = fish ? fish.toUpperCase() : "-";
-  lakeName.textContent = lake ? lake.toUpperCase() : "-";
+  fish1Name.textContent = fish ? fish.toUpperCase() : "-";
+  lake1Name.textContent = lake ? lake.toUpperCase() : "-";
 
   if (fish && lake && fishData[fish]) {
     const lakeData = fishData[fish].find(entry => entry.Lake === lake);
 
     if (lakeData) {
       const average = calculateAverage(lakeData);
-      attackValue.textContent = `${average} KG`;
+      attack1Value.textContent = `${average} KG`;
 
       fishImage.src = `assets/fish/${fish}.png`;
       const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
       document.getElementById("fishCard").style.backgroundImage = `url('${randomBg}')`;
     }
   } else {
-    attackValue.textContent = "-";
+    attack1Value.textContent = "-";
     fishImage.src = "";
     document.getElementById("fishCard").style.backgroundImage = "";
   }
 }
 
-// ✅ Correct event listeners
-fishSelect.addEventListener("change", updateCard);
-lakeSelect.addEventListener("change", updateCard);
+
 
 
 
@@ -83,9 +91,9 @@ lakeSelect.addEventListener("change", updateCard);
 // Copies the selected champion info to the left battle card
 function copyChampionToBattleCard() {
   // Copy values from the selection card
-  const selectedFishName = fishName.textContent;
-  const selectedLake = lakeName.textContent;
-  const selectedAttack = attackValue.textContent;
+  const selectedFishName = fish1Name.textContent;
+  const selectedLake = lake1Name.textContent;
+  const selectedAttack = attack1Value.textContent;
   const selectedImage = fishImage.src;
   const selectedBg = document.getElementById("fishCard").style.backgroundImage;
 
@@ -112,6 +120,10 @@ function getRandomFishAndLake() {
 
 function updateRightBattleCard() {
   const { fish, lake, data } = getRandomFishAndLake();
+
+  fish2Name = fish;
+  lake2name = lake;
+
   const average = calculateAverage(data);
   const formattedFishName = fish.replaceAll(" ", "_").toLowerCase();
   const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
@@ -127,4 +139,72 @@ function updateRightBattleCard() {
 function prepareBattle() {
   copyChampionToBattleCard();
   updateRightBattleCard();
+}
+
+
+
+
+// Manage the battle
+let currentScores = [0, 0];
+let currentYear = 2000;
+const endYear = 2005;
+
+function iterateYears(callback) {
+  if (currentYear > endYear) {
+      callback();  // Call the callback when iteration is complete
+      return;
+  }
+  
+  const fish1name = fish1Name.textContent;
+  const lake1name = lake1Name.textContent;
+  const fish1 = fishData[lake1name][fish1name][currentYear] || 0;
+  const fish2 = fishData[selectedLake[1]][selectedFish[1]][currentYear] || 0;
+  
+  document.getElementById("year").textContent = "Year: " + currentYear;
+  if (fish1 > fish2) {
+      document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 1";
+      currentScores[0]++;
+      document.getElementById("score1").textContent = "Fish Card 1: " + currentScores[0];
+  } else {
+      document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 2";
+      currentScores[1]++;
+      document.getElementById("score2").textContent = "Fish Card 2: " + currentScores[1];
+  }
+  currentYear++;
+  setTimeout(() => iterateYears(callback), 1000); // Continue iterating until finished
+}
+
+
+function announceWinner() {
+  if (currentScores[0] > currentScores[1]) {
+      document.getElementById("winnerName").textContent = "Winner: Card 1";
+  }
+  else if (currentScores[0] < currentScores[1]) {
+      document.getElementById("winnerName").textContent = "Winner: Card 2";
+  }
+  else {
+      document.getElementById("winnerName").textContent = "Winner: Both!";
+  }
+}
+
+
+function startGame() {
+  const fish1name = fish1Name.textContent;
+  const lake1name = lake1Name.textContent;
+  const fish2name = fish2Name;
+  const lake2name = lake2Name;
+
+  if (fish1name === '' || fish2name === '' || lake1name == '' || lake2name == '') return;
+  currentYear = 2000;
+  currentScores = [0, 0];
+
+  // window.location.hash = '#battle';
+  const battleSection = document.getElementById("battle");
+  if (battleSection) {
+    battleSection.scrollIntoView({ behavior: "smooth" });
+  }
+
+  iterateYears(() => {
+      announceWinner();  // Call announceWinner() only after all years are processed
+  });
 }
