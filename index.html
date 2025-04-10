@@ -1,90 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Great Saibling Deathmatch</title>
 
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
+  <!-- JetBrains Mono Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jockey+One&display=swap"
+    rel="stylesheet"
+  />
 
-    <link rel="stylesheet" href="styles.css">
-    <title>SAIBLING DEATHMATCH</title>
+  <link rel="stylesheet" href="styles_tryout.css" />
 </head>
 <body>
-    <section id="welcome">
-        <div class="section-content">
-            <header>
-                <h1>THE GREAT SAIBLING DEATHMATCH</h1>
-            </header>
-            <p>Welcome to the ultimate fish showdown. Scroll down or click the arrow to begin!</p>
-            <a href="#battle-selection" class="scroll-arrow">↓</a>
+  <!-- ✅ YOUR LANDING PAGE STARTS HERE -->
+  <div class="layout">
+    <div class="top-bar">
+      THE GREAT SAIBLING DEATHMATCH!!
+    </div>
+    <div class="content-wrapper">
+      <div class="blue-box">
+        <p>
+          SELECT A <strong>CHAMPION</strong> AND<br/>THEIR MAIN
+          <strong>ATTACK</strong>
+        </p>
+        <p>
+          & LET IT <strong>FIGHT</strong> AGAINST A<br/>WORTHY OPPONENT!
+        </p>
+        <a href="#champion-selection">
+          <button class="select-btn">SELECT CHAMPION</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ✅ NEW PAGE SECTIONS BEGIN HERE -->
+  <section id="champion-selection" class="champion-selection">
+
+    <div class="layout">
+    <div class="top-bar-2">CHOOSE YOUR CHAMPION!</div>
+    <div class="content">
+      <div class="left-panel">
+        <label for="fishSelect">SELECT FIGHTER:</label>
+        <select id="fishSelect">
+          <option disabled selected value="">-- Select Fish --</option>
+        </select>
+
+        <label for="lakeSelect">SELECT ATTACK:</label>
+        <select id="lakeSelect">
+          <option disabled selected value="">-- Select Lake --</option>
+        </select>
+        <a href="#battle">
+          <button class="arena-button" onclick="prepareBattle()">GO TO ARENA!</button>
+        </a>
+        
+        
+        
+      </div>
+      <div class="right-panel">
+        <div class="card-wrapper">
+          <img class="card-background" src="assets/labels.png" alt="BG" />
+          <div class="card" id="fishCard">
+            <h3 id="fishName">FISH</h3>
+            <img id="fishImage" src="" alt="Fish">
+            <div class="card-footer">
+              <span id="lakeName">Lake</span>
+              <span id="attackValue">0 KG</span>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
+  
 
-    <section id="battle-selection">
-        <div class="section-content">
-            <main>
-                <h2>SELECT A CHAMPION AND THEIR ATTACK!</h2>
-                <div class="selection-container">
-                    <div class="selection-box">
-                        <h3>Fish Card 1</h3>
-                        <label for="lake1Select">Lake 1:</label>
-                        <select id="lake1Select">
-                            <option value="">Select Lake</option>
-                        </select>
-                        <label for="fish1Select">Fish 1:</label>
-                        <select id="fish1Select">
-                            <option value="">Select Fish</option>
-                        </select>
-                    </div>
-                    <div class="selection-box">
-                        <h3>Fish Card 2</h3>
-                        <label for="lake2Select">Lake 2:</label>
-                        <select id="lake2Select">
-                            <option value="">Select Lake</option>
-                        </select>
-                        <label for="fish2Select">Fish 2:</label>
-                        <select id="fish2Select">
-                            <option value="">Select Fish</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <button id="startButton" disabled>Start Game</button>
-            
-                <!-- <a href="#battle" class="scroll-arrow">↓</a> -->
-            </main>
+  <section id="battle" class="battle">
+    <div class="section-content">
+      <main>
+        <h2>FIGHT!</h2>
+        <div class="card-battle-wrapper">
+          <div class="card" id="card1">
+            <h3 id="fishName">FISH</h3>
+            <img id="fishImage" src="" alt="Fish" />
+            <div class="card-footer">
+              <span id="lakeName">Lake</span>
+              <span id="attackValue">0 KG</span>
+            </div>
+          </div>
+  
+          <div class="vs">VS.</div>
+  
+          <div class="card" id="card2">
+            <h3 id="fishName2">FISH</h3>
+            <img id="fishImage2" src="" alt="Fish" />
+            <div class="card-footer">
+              <span id="lakeName2">Lake</span>
+              <span id="attackValue2">0 KG</span>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <section id="battle">
-        <div class="section-content">
-            <main>
-                <h2>FIGHT!</h2>
-                <div class="score-board">
-                    <h4 id="score1">Fish Card 1: 0</h4>
-                    <h4 id="score2">Fish Card 2: 0</h4>
-                </div>
-                <p id="year">Year: -</p>
-                <p id="pointWinner"></p>
-                <p id="winner">Winner: </p>
-
-                <a href="#information" class="scroll-arrow">↓</a>
-            </main>
-            
+  
+        <button class="arena-button" onclick="startBattle()">FIGHT!!!</button>
+  
+        <div class="result-display">
+          <div class="left-result">
+            <p>YOUR CHAMPION</p>
+            <h2 id="winnerName">-</h2>
+            <p id="winnerStatement">WINS WITH X POINTS!</p>
+          </div>
+          <div class="right-result">
+            <p><strong id="fish1Name">-</strong> <span id="score1">0</span></p>
+            <p><strong id="fish2Name">-</strong> <span id="score2">0</span></p>
+          </div>
         </div>
-    </section>
+      </main>
+    </div>
+  </section>
+  
 
-    <section id="information">
-        <div class="section-content">
-            <p>...</p>
-            <footer>
-                <p>© 2025 JAKOB & DAMIAN</p>
-            </footer>
-        </div>
-    </section>
+  <section id="information">
+    <div class="section-content">
+      <p>...</p>
+      <footer>
+        <p>© 2025 JAKOB & DAMIAN</p>
+      </footer>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <script src="scriptTryout.js"></script>
 </body>
 </html>
+
+
+
+  
+   
