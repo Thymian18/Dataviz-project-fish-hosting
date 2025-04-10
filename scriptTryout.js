@@ -15,7 +15,7 @@ const lake1Name = document.getElementById("lakeName");
 const attack1Value = document.getElementById("attackValue");
 
 let fish2Name = "";
-let lake2name = "";
+let lake2Name = "";
 
 let fishData = {};
 
@@ -29,6 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(error => console.error('Error fetching JSON:', error));
 
   // ✅ Correct event listeners
+  const toArenaButton = document.getElementById("to-arena-button");
+  toArenaButton.addEventListener("click", prepareBattle)
+
+  const startButton = document.getElementById("fight-button");
+  startButton.addEventListener("click", startGame);
+
   fishSelect.addEventListener("change", updateCard);
   lakeSelect.addEventListener("change", updateCard);
 });
@@ -139,6 +145,11 @@ function updateRightBattleCard() {
 function prepareBattle() {
   copyChampionToBattleCard();
   updateRightBattleCard();
+
+  const battleSection = document.getElementById("battle");
+  if (battleSection) {
+    battleSection.scrollIntoView({ behavior: "smooth" });
+  }
 }
 
 
@@ -151,14 +162,19 @@ const endYear = 2005;
 
 function iterateYears(callback) {
   if (currentYear > endYear) {
+      console.log("Iteration complete, return to callback.");
       callback();  // Call the callback when iteration is complete
       return;
   }
+
+  console.log("Start the iteration over years...");
   
   const fish1name = fish1Name.textContent;
   const lake1name = lake1Name.textContent;
   const fish1 = fishData[lake1name][fish1name][currentYear] || 0;
-  const fish2 = fishData[selectedLake[1]][selectedFish[1]][currentYear] || 0;
+  const fish2name = fish2Name;
+  const lake2name = lake2Name;
+  const fish2 = fishData[lake2name][fish2name][currentYear] || 0;
   
   document.getElementById("year").textContent = "Year: " + currentYear;
   if (fish1 > fish2) {
@@ -171,6 +187,7 @@ function iterateYears(callback) {
       document.getElementById("score2").textContent = "Fish Card 2: " + currentScores[1];
   }
   currentYear++;
+  console.log("Next year!");
   setTimeout(() => iterateYears(callback), 1000); // Continue iterating until finished
 }
 
@@ -194,15 +211,13 @@ function startGame() {
   const fish2name = fish2Name;
   const lake2name = lake2Name;
 
+  console.log("The game gets started...");
+
   if (fish1name === '' || fish2name === '' || lake1name == '' || lake2name == '') return;
   currentYear = 2000;
   currentScores = [0, 0];
 
-  // window.location.hash = '#battle';
-  const battleSection = document.getElementById("battle");
-  if (battleSection) {
-    battleSection.scrollIntoView({ behavior: "smooth" });
-  }
+  console.log("About to call iterateYears");
 
   iterateYears(() => {
       announceWinner();  // Call announceWinner() only after all years are processed
