@@ -14,16 +14,18 @@ const fish1Name = document.getElementById("fishName");
 const lake1Name = document.getElementById("lakeName");
 const attack1Value = document.getElementById("attackValue");
 
+let fish1NameLowercase = "";
+let lake1NameLowercase = "";
 let fish2Name = "";
 let lake2Name = "";
 
-let fishData = {};
+let lakeData = {};
 
 document.addEventListener("DOMContentLoaded", () => {
-  fetch("data/commercialFishing.json")
+  fetch("data/commercialFishing2.json")
     .then(res => res.json())
     .then(data => {
-      fishData = data;
+      lakeData = data;
       populateDropdowns(data);
     })
     .catch(error => console.error('Error fetching JSON:', error));
@@ -40,24 +42,24 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function populateDropdowns(data) {
-  Object.keys(data).forEach(fish => {
-    const option = document.createElement("option");
-    option.value = fish;
-    option.textContent = fish.toUpperCase();
-    fishSelect.appendChild(option);
-  });
-
-  const lakes = data[Object.keys(data)[0]].map(entry => entry.Lake);
-  lakes.forEach(lake => {
+  Object.keys(data).forEach(lake => {
     const option = document.createElement("option");
     option.value = lake;
     option.textContent = lake.toUpperCase();
     lakeSelect.appendChild(option);
   });
+
+  const fishes = Object.keys(data["Total"]); //.map(entry => entry.Fish);
+  fishes.forEach(fish => {
+    const option = document.createElement("option");
+    option.value = fish;
+    option.textContent = fish.toUpperCase();
+    fishSelect.appendChild(option);
+  });
 }
 
 function calculateAverage(data) {
-  const years = Object.keys(data).filter(key => key !== "Lake");
+  const years = Object.keys(data);
   const values = years.map(y => parseFloat(data[y])).filter(v => !isNaN(v));
   const avg = values.reduce((a, b) => a + b, 0) / values.length;
   return Math.round(avg * 10) / 10;
@@ -67,14 +69,20 @@ function updateCard() {
   const fish = fishSelect.value;
   const lake = lakeSelect.value;
 
+  fish1NameLowercase = fish ? fish : "";
+  lake1NameLowercase = lake ? lake : "";
+
   fish1Name.textContent = fish ? fish.toUpperCase() : "-";
   lake1Name.textContent = lake ? lake.toUpperCase() : "-";
 
-  if (fish && lake && fishData[fish]) {
-    const lakeData = fishData[fish].find(entry => entry.Lake === lake);
+  if (fish && lake && lakeData[lake]) {
+    // console.log(`Type of lakeData[${lake}]:`, typeof lakeData[lake]);
+    // console.log(`Value of lakeData[${lake}]:`, lakeData[lake]);
 
-    if (lakeData) {
-      const average = calculateAverage(lakeData);
+    const fishData = lakeData[lake][fish];//.find(entry => entry.Fish === fish);
+
+    if (fishData) {
+      const average = calculateAverage(fishData);
       attack1Value.textContent = `${average} KG`;
 
       fishImage.src = `assets/fish/${fish}.png`;
@@ -113,14 +121,18 @@ function copyChampionToBattleCard() {
 
 
 function getRandomFishAndLake() {
-  const fishList = Object.keys(fishData);
-  const randomFish = fishList[Math.floor(Math.random() * fishList.length)];
-  const lakeEntries = fishData[randomFish];
-  const randomLakeEntry = lakeEntries[Math.floor(Math.random() * lakeEntries.length)];
+  const lakeList = Object.keys(lakeData).filter(lake => lake != "Total");
+  // console.log(`lake list: ${lakeList}`);
+  const randomLake = lakeList[Math.floor(Math.random() * lakeList.length)];
+  // console.log(`random lake: ${randomLake}`);
+  const fishEntries = Object.keys(lakeData[randomLake]);
+  // console.log(`fish entries: ${fishEntries}`);
+  const randomFishEntry = fishEntries[Math.floor(Math.random() * fishEntries.length)];
+  // console.log(`random fish entry: ${randomFishEntry}`);
   return {
-    fish: randomFish,
-    lake: randomLakeEntry.Lake,
-    data: randomLakeEntry
+    fish: randomFishEntry,
+    lake: randomLake,
+    data: lakeData[randomLake][randomFishEntry]
   };
 }
 
@@ -128,9 +140,10 @@ function updateRightBattleCard() {
   const { fish, lake, data } = getRandomFishAndLake();
 
   fish2Name = fish;
-  lake2name = lake;
+  lake2Name = lake;
 
   const average = calculateAverage(data);
+  // console.log(`Type of ${fish}:`, typeof fish);
   const formattedFishName = fish.replaceAll(" ", "_").toLowerCase();
   const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
 
@@ -167,24 +180,30 @@ function iterateYears(callback) {
       return;
   }
 
-  console.log("Start the iteration over years...");
-  
-  const fish1name = fish1Name.textContent;
-  const lake1name = lake1Name.textContent;
-  const fish1 = fishData[lake1name][fish1name][currentYear] || 0;
+  // console.log(`Fish data keys: ${Object.keys(lakeData)}`);
+  const fish1name = fish1NameLowercase;
+  const lake1name = lake1NameLowercase;
+  // console.log(`fish1 keys = ${Object.keys(lakeData[lake1name])}, lake1name_lc = ${lake1name}`);
+
+  const fish1 = lakeData[lake1name][fish1name][currentYear] || 0;
   const fish2name = fish2Name;
   const lake2name = lake2Name;
-  const fish2 = fishData[lake2name][fish2name][currentYear] || 0;
+  const fish2 = lakeData[lake2name][fish2name][currentYear] || 0;
   
-  document.getElementById("year").textContent = "Year: " + currentYear;
+  // document.getElementById("year").textContent = "Year: " + currentYear;
+  console.log(`Year: ${currentYear}`);
   if (fish1 > fish2) {
-      document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 1";
+      // document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 1";
+      console.log(`You won the last point`);
       currentScores[0]++;
-      document.getElementById("score1").textContent = "Fish Card 1: " + currentScores[0];
+      // document.getElementById("score1").textContent = "Fish Card 1: " + currentScores[0];
+      console.log(`Your current score: ${currentScores[0]}`);
   } else {
-      document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 2";
+      // document.getElementById("pointWinner").textContent = "Last point won by: Fish Card 2";
+      console.log(`You lost the last point`);
       currentScores[1]++;
-      document.getElementById("score2").textContent = "Fish Card 2: " + currentScores[1];
+      // document.getElementById("score2").textContent = "Fish Card 2: " + currentScores[1];
+      console.log(`The computer's current score: ${currentScores[1]}`);
   }
   currentYear++;
   console.log("Next year!");
@@ -212,8 +231,12 @@ function startGame() {
   const lake2name = lake2Name;
 
   console.log("The game gets started...");
+  console.log(`fish1name = ${fish1name}, fish2name = ${fish2name}, lake1name = ${lake1name}, lake2name = ${lake2name}`);
 
-  if (fish1name === '' || fish2name === '' || lake1name == '' || lake2name == '') return;
+  if (fish1name === '' || fish2name === '' || lake1name == '' || lake2name == '') {
+    console.log("Return early");
+    return;
+  }
   currentYear = 2000;
   currentScores = [0, 0];
 
