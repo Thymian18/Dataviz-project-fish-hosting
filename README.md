@@ -86,7 +86,8 @@ However, the use cases of our datasets are rare, which suggests the novelty of o
 ## Milestone 2 (18th April, 5pm)
 
 **10% of the final grade**
-Letting a normal python server run the index.html shows our basic website so far.
+The current website can be found [here](https://thymian18.github.io/Dataviz-project-fish-hosting/).
+ 
 
 ## Milestone 3 (30th May, 5pm)
 
