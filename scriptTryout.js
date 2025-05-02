@@ -280,7 +280,7 @@ function setupBattlePlot(years, maxY) {
 
   const outerWidth = 0.8 * container.node().clientWidth;
   const outerHeight = 0.8 * container.node().clientHeight;
-  const margin = { top: 20, right: 20, bottom: 40, left: 60 };
+  const margin = { top: 20, right: 20, bottom: 60, left: 60 };
 
   const width = outerWidth - margin.left - margin.right;
   const height = outerHeight - margin.top - margin.bottom;
@@ -292,18 +292,19 @@ function setupBattlePlot(years, maxY) {
   svg = svgContainer.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
-  yScale = d3.scaleLinear()
-    .domain([d3.max(years), d3.min(years)]) // vertical: top to bottom
-    .range([0, height]);
 
   xScale = d3.scaleLinear()
-    .domain([0, maxY])
+    .domain(d3.extent(years.map(Number)))
     .range([0, width]);
 
+  yScale = d3.scaleLinear()
+    .domain([0, maxY])
+    .range([height, 0]);
+
   lineGen = d3.line()
-    .x(d => xScale(d.value))
-    .y(d => yScale(+d.year))
-    .curve(d3.curveMonotoneY);
+    .x(d => xScale(+d.year))
+    .y(d => yScale(d.value))
+    .curve(d3.curveMonotoneX);
 
   lineBlue = svg.append("path")
     .attr("fill", "none")
@@ -312,56 +313,56 @@ function setupBattlePlot(years, maxY) {
 
   lineRed = svg.append("path")
     .attr("fill", "none")
-    .attr("stroke", "#ff6663")
+    .attr("stroke", "#FF6663")
     .attr("stroke-width", 3);
 
-    svg.append("g")
-    .call(d3.axisLeft(yScale).tickFormat(d3.format("d")))
+  // Y-Axis: KG
+  svg.append("g")
+    .call(d3.axisLeft(yScale))
     .call(g => {
       g.selectAll("text")
         .style("fill", "#FFFAE9")
         .style("font-family", "'JetBrains Mono', monospace")
         .style("font-size", "12px");
-  
-      g.selectAll("line")
-        .style("stroke", "#FFFAE9");
-  
-      g.select(".domain")
-        .style("stroke", "#FFFAE9");
+
+      g.selectAll("line").style("stroke", "#FFFAE9");
+      g.select(".domain").style("stroke", "#FFFAE9");
     });
-  
-    svg.append("g")
-  .attr("transform", `translate(0,${height})`)
-  .call(d3.axisBottom(xScale).ticks(6))
-  .call(g => {
-    g.selectAll("text")
-      .style("fill", "#FFFAE9")
-      .style("font-family", "'JetBrains Mono', monospace")
-      .style("font-size", "12px")
-      .attr("transform", "rotate(-40)")
-      .attr("text-anchor", "end");
 
-    g.selectAll("line").style("stroke", "#FFFAE9");
-    g.select(".domain").style("stroke", "#FFFAE9");
-  });
+  // X-Axis: Year
+  svg.append("g")
+    .attr("transform", `translate(0,${height})`)
+    .call(d3.axisBottom(xScale).ticks(6).tickFormat(d3.format("d")))
+    .call(g => {
+      g.selectAll("text")
+        .style("fill", "#FFFAE9")
+        .style("font-family", "'JetBrains Mono', monospace")
+        .style("font-size", "12px")
+        .attr("text-anchor", "middle")
+        .attr("dy", "1.2em");
 
+      g.selectAll("line").style("stroke", "#FFFAE9");
+      g.select(".domain").style("stroke", "#FFFAE9");
+    });
 
-
+  // X-Axis Label
   svg.append("text")
     .attr("x", width / 2)
-    .attr("y", height + margin.bottom - 5)
+    .attr("y", height + margin.bottom - 10)
     .attr("text-anchor", "middle")
     .style("fill", "#FFFAE9")
     .style("font-size", "14px")
-    .text("KG FISHED")
-    .style("font-family", "var(--font-titles)");;
+    .style("font-family", "var(--font-titles)")
+    .text("YEAR");
 
+  // Y-Axis Label
   svg.append("text")
-    .attr("x", -margin.left + 5)
-    .attr("y", -10)
-    .attr("text-anchor", "start")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left + 10)
+    .attr("x", -height / 2)
+    .attr("text-anchor", "middle")
     .style("fill", "#FFFAE9")
     .style("font-size", "14px")
-    .text("YEAR")
-    .style("font-family", "var(--font-titles)");;
+    .style("font-family", "var(--font-titles)")
+    .text("KG FISHED");
 }
