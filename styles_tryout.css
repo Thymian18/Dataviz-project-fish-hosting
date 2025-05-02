@@ -310,10 +310,17 @@ p {
   height: 100vh;
 }
 
+
+
 .battle-plot-segment {
   flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--darkblue);
+  padding: 2vh;
 }
+
 
 
 /* ---------------------------------------------------
@@ -340,11 +347,17 @@ main {
 .middle-battle-card-stuff {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   height: 100%;
+  justify-content: flex-start; /* Start with top for VS text */
+  gap: 20px;
   position: relative;
 }
+
+.middle-battle-card-stuff .arena-button {
+  margin-top: auto; /* Push to bottom of column */
+}
+
 
 .vs {
   position: absolute;
