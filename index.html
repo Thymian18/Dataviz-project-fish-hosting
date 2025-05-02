@@ -13,62 +13,68 @@
     rel="stylesheet"
   />
 
+  <!-- Funky Font-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Jockey+One&family=Jolly+Lodger&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles_tryout.css" />
+  
 </head>
 <body>
-  <!-- ✅ YOUR LANDING PAGE STARTS HERE -->
-  <section id="welcome">
-    <div class="layout">
-      <div class="top-bar">
-        THE GREAT SAIBLING DEATHMATCH!!
-      </div>
-      <div class="content-wrapper">
-        <div class="blue-box">
-          <p>
-            SELECT A <strong>CHAMPION</strong> AND<br/>THEIR MAIN
-            <strong>ATTACK</strong>
-          </p>
-          <p>
-            & LET IT <strong>FIGHT</strong> AGAINST A<br/>WORTHY OPPONENT!
-          </p>
-          <a href="#champion-selection">
-            <button class="select-btn">SELECT CHAMPION</button>
-          </a>
-        </div>
+
+  <div class="layout">
+    <div class="top-bar">
+      THE GREAT SAIBLING DEATHMATCH!!
+    </div>
+    <div class="content-wrapper">
+      <div class="blue-box">
+        <p>
+          SELECT A <strong>CHAMPION</strong> AND<br />THEIR MAIN
+          <strong>ATTACK</strong>
+        </p>
+        <p>
+          & LET IT <strong>FIGHT</strong> AGAINST A<br />WORTHY OPPONENT!
+        </p>
+        <a href="#champion-selection">
+          <button class="select-btn">SELECT CHAMPION</button>
+        </a>
       </div>
     </div>
-  </section>
+  </div>
 
 
-  <!-- NEW PAGE SECTIONS BEGIN HERE -->
+
   <section id="champion-selection" class="champion-selection">
-    <div class="layout">
-      <div class="top-bar-2">CHOOSE YOUR CHAMPION!</div>
-      <div class="content">
-        <div class="left-panel">
-          <label for="fishSelect">SELECT FIGHTER:</label>
-          <select id="fishSelect">
-            <option disabled selected value="">-- Select Fish --</option>
-          </select>
 
-          <label for="lakeSelect">SELECT ATTACK:</label>
-          <select id="lakeSelect">
-            <option disabled selected value="">-- Select Lake --</option>
-          </select>
-          <a href="#battle">
-            <button id="to-arena-button" class="arena-button">GO TO ARENA!</button>
-          </a>
-        </div>
-        <div class="right-panel">
-          <div class="card-wrapper">
-            <div class="card-background"></div>
-            <div class="card" id="fishCard">
-              <h3 id="fishName">FISH</h3>
-              <img id="fishImage" src="" alt="Fish">
-              <div class="card-footer">
-                <span id="lakeName">Lake</span>
-                <span id="attackValue">0 KG</span>
-              </div>
+    <div class="layout">
+    <div class="top-bar-2">CHOOSE YOUR CHAMPION!</div>
+    <div class="content">
+      <div class="left-panel">
+        <label for="fishSelect">SELECT FIGHTER:</label>
+        <select id="fishSelect">
+          <option disabled selected value="">-- Select Fish --</option>
+        </select>
+
+        <label for="lakeSelect">SELECT ATTACK:</label>
+        <select id="lakeSelect">
+          <option disabled selected value="">-- Select Lake --</option>
+        </select>
+        <a href="#battle">
+          <button class="arena-button" onclick="prepareBattle()">GO TO ARENA!</button>
+        </a>
+        
+        
+        
+      </div>
+      <div class="right-panel">
+        <div class="card-wrapper">
+          <div class="card-background"></div>
+          <div class="card" id="fishCard">
+            <h3 id="fishName">FISH</h3>
+            <img id="fishImage" src="" alt="Fish">
+            <div class="card-footer">
+              <span id="lakeName">Lake</span>
+              <span id="attackValue">0 KG</span>
             </div>
           </div>
         </div>
@@ -77,10 +83,12 @@
   </section>
   
   <section id="battle" class="battle">
-    <div class="layout">
+
+    <div class="section-content">
       <main>
-        
+    
         <div class="card-battle-wrapper">
+          
           <div class="card" id="card1">
             <h3 id="fishName">FISH</h3>
             <img id="fishImage" src="" alt="Fish" />
@@ -89,9 +97,12 @@
               <span id="attackValue">0 KG</span>
             </div>
           </div>
-  
-          <div class="vs">VS.</div>
-  
+          
+          <div class="middle-battle-card-stuff">
+            <div class="vs">VS.</div>
+            <button class="arena-button" onclick="startBattle()">FIGHT!!!</button>
+          </div>
+
           <div class="card" id="card2">
             <h3 id="fishName2">FISH</h3>
             <img id="fishImage2" src="" alt="Fish" />
@@ -101,12 +112,15 @@
             </div>
           </div>
         </div>
-  
-        <button id="fight-button" class="arena-button">FIGHT!!!</button>
-  
+        
+        
+
+    
+    
         <div class="result-display">
+
           <div class="left-result">
-            <p>YOUR CHAMPION</p>
+            <p>THE CHAMPION</p>
             <h2 id="winnerName">-</h2>
             <p id="winnerStatement">WINS WITH X POINTS!</p>
           </div>
@@ -118,6 +132,9 @@
         </div>
       </main>
     </div>
+
+    <div class="battle-plot-segment"></div>
+
   </section>
   
 
@@ -132,6 +149,8 @@
 
   <script src="scriptTryout.js"></script>
   <script src="viewport.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+
 </body>
 </html>
 

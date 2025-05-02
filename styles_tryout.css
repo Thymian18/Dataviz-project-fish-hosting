@@ -1,111 +1,100 @@
-
+/* ---------------------------------------------------
+   ROOT VARIABLES
+--------------------------------------------------- */
 :root {
-    --lightblue: #676AF4;
-    --darkblue: #011638;
-    --text-light: #FFFAE9;
-    --red: #FF6663;
+  --lightblue: #676AF4;
+  --darkblue: #011638;
+  --text-light: #FFFAE9;
+  --red: #FF6663;
 
-    --font-titles: 'JetBrains Mono', monospace;
-    --font-text: 'Inter', sans-serif;
-  }
+  --font-titles: 'JetBrains Mono', monospace;
+  --font-text: 'Inter', sans-serif;
+}
 
 
-  /* html {
-    scroll-behavior: smooth;
-  } */
-  
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ---------------------------------------------------
+   GLOBAL STYLES
+--------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
 }
 
 body, html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: var(--font-text);
 }
 
-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
+p {
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 35px);
+  text-align: left;
 }
 
+/* ---------------------------------------------------
+   LAYOUT BASE
+--------------------------------------------------- */
 .layout {
-  /* min-height: calc(var(--vh, 1vh) * 100); */
-  /* width: 100%; */
-  height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+  width: 100vw;
   display: flex;
-  flex: 1;
   flex-direction: column;
   background: url('assets/gradientbg.png') no-repeat center center;
   background-size: cover;
 }
 
-.top-bar {
-  background-color: var(--lightblue);
-  color: var(--text-light);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 6vmin, 80px);
-
-  font-family: var(--font-titles);
-  text-align: center;
-  padding: 4vh 2vw;
-  height: 20vh;
-  width: 80%;
-}
-
-.top-bar-2 {
-  background-color: var(--lightblue);
-  color: var(--text-light);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 6vmin, 80px);
-  
-  font-family: var(--font-titles);
-  text-align: center;
-  padding: 4vh 2vw;
-  height: 20vh;
-  width: 80%;
-  margin: auto;
-}
-  
-p {
-  font-weight: 300;
-  font-size: clamp(2rem, 4vw, 35px);
-  text-align: left;
-  font-family: var(--font-text);
-}
-  
 .content-wrapper {
   display: flex;
   flex: 1;
 }
 
+
+/* ---------------------------------------------------
+   HEADERS / BANNERS
+--------------------------------------------------- */
+.top-bar,
+.top-bar-2 {
+  background-color: var(--lightblue);
+  color: var(--text-light);
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 80px);
+  font-family: var(--font-titles);
+  text-align: center;
+  padding: 40px 20px;
+  width: 80%;
+}
+
+.top-bar-2 {
+  margin-left: auto;
+}
+
+.header {
+  background-color: #676AF4;
+  color: white;
+  text-align: center;
+  font-family: var(--font-titles);
+  font-size: clamp(2rem, 5vw, 60px);
+  padding: 30px;
+}
+
+
+/* ---------------------------------------------------
+   BLUE BOX SECTION
+--------------------------------------------------- */
 .blue-box {
   background-color: var(--darkblue);
   color: var(--text-light);
   width: 80%;
   margin-left: auto;
-  padding: 10% 5%;
-  padding-top: 10%;
+  padding: 10% 5% 5% 5%;
   text-align: center;
   font-size: 1.25rem;
-  font-weight: normal; 
 }
 
 .blue-box p {
-  padding-left: 25%; /* Adjust as needed */
-
-  text-align: left;   /* Optional: makes it left-aligned too */
+  padding-left: 25%;
+  text-align: left;
 }
 
 .blue-box strong {
@@ -119,42 +108,50 @@ p {
 }
 
 
+/* ---------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
+.select-btn,
+.arena-button {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-light);
+  background-color: var(--lightblue);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
 .select-btn {
   margin-top: 40px;
   padding: 12px 28px;
-
-  font-size: 1rem;
-  background-color: var(--lightblue);
-  color: var(--text-light);
-  border: none;
-  border-radius: 20px;
-  font-weight: bold;
-  cursor: crosshair;
-
-  transition: transform 0.1s ease-in-out;
-
   position: relative;
   left: 40%;
   transform: translateX(-100%);
 }
-
 
 .select-btn:hover {
   background-color: var(--red);
   transform: scale(1.1) translateX(-100%);
 }
 
-
-
-.header {
-  background-color: #676AF4;
-  color: white;
-  text-align: center;
-  font-family: var(--font-titles);
-  font-size: clamp(2rem, 5vw, 60px);
-  padding: 30px;
+.arena-button {
+  padding: 12px 24px;
+  width: fit-content;
+  /*position: absolute;*/
+  bottom: 5%;
 }
 
+.arena-button:hover {
+  background-color: var(--red);
+  transform: scale(1.1);
+}
+
+
+/* ---------------------------------------------------
+   PANELS (CHAMPION SELECTION)
+--------------------------------------------------- */
 .content {
   flex: 1;
   display: flex;
@@ -167,9 +164,8 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; 
+  align-items: center;
   padding: 60px;
-
 }
 
 .left-panel label {
@@ -179,26 +175,21 @@ p {
 }
 
 .left-panel select {
-  padding: 10px;
-  font-size: 1rem;
   width: 100%;
   max-width: 300px;
+  padding: 10px 2rem 10px 10px;
+  font-size: 1rem;
   border-radius: 4px;
   margin-bottom: 20px;
   background-color: var(--darkblue);
   color: var(--text-light);
   border: 1px solid #ccc;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   background-image: 'assets/gradientbg.png';
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 12px 8px;
-  padding-right: 2rem;
 }
-
-
 
 .right-panel {
   width: 50%;
@@ -208,124 +199,10 @@ p {
   padding: 40px;
 }
 
-.card {
-  width: 250px;
-  height: 350px;
-  border-radius: 30px;
-  background: url('assets/emptyCards/card_empty_4.png') center center / cover no-repeat;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  /*padding: 20px;*/
-  font-family: var(--font-titles);
-  text-align: center;
-  position: relative;
-  box-sizing: border-box;
-  transition: transform 0.1s ease-in-out;
-  transform: rotate(7deg);
-}
 
-
-.card img {
-  width: 200px;
-  height: 180px;
-  border-radius: 20px;
-  position: absolute;
-  left: 26px;   /* x = 25 */
-  top: 50px;    /* y = 50 */
-}
-
-.card h3 {
-  position: absolute;
-  top: 10px;
-  left: 26px; 
-  font-size: 1.5rem;
-  margin: 0;
-  color: var(--darkblue);
-}
-
-.card-footer {
-  left: 26px;
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  position: absolute;
-  top: 300px;
-  
-}
-
-.card-battle-wrapper {
-  width: 60vw;
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10vmin;/*40px;*/
-  margin: 1vh 0 0 0;
-  /* margin: 6vh 040px 0; */
-}
-
-.arena-button {
-  background-color: var(--lightblue);
-  color: var(--text-light);
-  font-weight: bold;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 20px;
-  font-size: 1rem;
-  margin-top: 20px;
-  width: 60vw;
-  cursor: pointer;
-  transition: transform 0.1s ease-in-out;
-}
-
-.arena-button:hover {
-  background-color: var(--red);
-  transform: scale(1.1);
-}
-
-
-.card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 50px 60px rgba(60, 50, 50, 0.286);
-  
-}
-
-.card h3 {
-  position: absolute;
-  top: 10px;
-  left: 26px;
-  font-size: 1.5rem;
-  margin: 0;
-  color: var(--darkblue);
-}
-
-.card img {
-  width: 200px;
-  height: 180px;
-  border-radius: 20px;
-  position: absolute;
-  left: 26px;
-  top: 50px;
-}
-
-.card-footer {
-  left: 26px;
-  width: 80%;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-  position: absolute;
-  top: 300px;
-  color: var(--darkblue);
-  font-weight: bold;
-}
-
-
-
+/* ---------------------------------------------------
+   CARD STYLING
+--------------------------------------------------- */
 .card-wrapper {
   position: relative;
   width: 588px;
@@ -341,25 +218,37 @@ p {
   height: 350px;
   z-index: 0;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
   pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
   transform: scale(1.1) translateX(-5px);
   background: url('assets/labels.png') center center / contain no-repeat;
 }
 
 .card-background.scale-small {
-  transform: scale(1.8) translateX(-5px); /* Or whatever scale you want */
+  transform: scale(1.8) translateX(-5px);
 }
-
-
 
 .card-wrapper:hover .card-background {
   opacity: 1;
 }
 
 .card {
-  z-index: 1;
+  width: 250px;
+  height: 350px;
+  border-radius: 30px;
+  background: url('assets/emptyCards/card_empty_4.png') center center / cover no-repeat;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-titles);
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: rotate(7deg);
+  z-index: 1;
 }
 
 .card:hover {
@@ -367,16 +256,122 @@ p {
   box-shadow: 0 50px 60px rgba(60, 50, 50, 0.286);
 }
 
+.card h3,
+.card-footer,
+.card img {
+  position: absolute;
+  left: 26px;
+}
+
+.card h3 {
+  top: 10px;
+  font-size: 1.5rem;
+  color: var(--darkblue);
+  margin: 0;
+}
+
+.card img {
+  top: 50px;
+  width: 200px;
+  height: 180px;
+  border-radius: 20px;
+}
+
+.card-footer {
+  top: 300px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--darkblue);
+  font-weight: bold;
+}
 
 
+/* ---------------------------------------------------
+   BATTLE SECTION
+--------------------------------------------------- */
+.battle {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  background: url('assets/gradientbg.png') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.section-content {
+  flex: 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+
+
+.battle-plot-segment {
+  flex: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--darkblue);
+  padding: 2vh;
+}
+
+
+
+/* ---------------------------------------------------
+   CARD BATTLE LAYOUT
+--------------------------------------------------- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-battle-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10%;
+  flex: 8;
+  margin-bottom: 5%;
+}
+
+.middle-battle-card-stuff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-start; /* Start with top for VS text */
+  gap: 20px;
+  position: relative;
+}
+
+.middle-battle-card-stuff .arena-button {
+  margin-top: auto; /* Push to bottom of column */
+}
 
 
 .vs {
-  font-size: 2rem;
-  font-family: var(--font-titles);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-family: 'Jolly Lodger';
   color: var(--red);
 }
 
+
+/* ---------------------------------------------------
+   RESULT DISPLAY
+--------------------------------------------------- */
 .result-display {
   flex: 0 0 30%;
   display: flex;
