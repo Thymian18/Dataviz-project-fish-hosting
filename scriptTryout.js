@@ -29,7 +29,18 @@ fetch("data/commercialFishing.json")
   .then(data => {
     fishData = data;
     populateDropdowns(data);
+    setLakePlaceholder();
   });
+
+// to hold the mapping of lakes to fish for the sampling of the right battle card
+let lakeToFishMap = {};
+
+fetch("data/commercial_lakesToFish.json")
+  .then(res => res.json())
+  .then(data => {
+    lakeToFishMap = data;
+  });
+
 
 function populateDropdowns(data) {
   Object.keys(data).forEach(fish => {
@@ -38,15 +49,52 @@ function populateDropdowns(data) {
     option.textContent = fish.toUpperCase();
     fishSelect.appendChild(option);
   });
-
-  const lakes = data[Object.keys(data)[0]].map(entry => entry.Lake);
-  lakes.forEach(lake => {
-    const option = document.createElement("option");
-    option.value = lake;
-    option.textContent = lake.toUpperCase();
-    lakeSelect.appendChild(option);
-  });
 }
+
+fishSelect.addEventListener("change", () => {
+  const selectedFish = fishSelect.value;
+  populateLakesForFish(selectedFish);
+});
+
+function populateLakesForFish(fish) {
+  lakeSelect.innerHTML = "";
+
+  const lakeEntries = fishData[fish];
+  const yearKeys = Object.keys(lakeEntries[0]).filter(key => /^\d{4}$/.test(key));
+
+  let addedAny = false;
+
+  lakeEntries.forEach(entry => {
+    const lake = entry.Lake;
+    const allZero = yearKeys.every(year => entry[year] === 0);
+
+    if (!allZero && lake.toUpperCase() !== "TOTAL") {
+      const option = document.createElement("option");
+      option.value = lake;
+      option.textContent = lake.toUpperCase();
+      lakeSelect.appendChild(option);
+      addedAny = true;
+    }
+  });
+
+  if (!addedAny) {
+    const noValid = document.createElement("option");
+    noValid.disabled = true;
+    noValid.selected = true;
+    noValid.textContent = "No lakes with data";
+    lakeSelect.appendChild(noValid);
+  }
+}
+
+function setLakePlaceholder() {
+  lakeSelect.innerHTML = "";
+  const placeholder = document.createElement("option");
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  placeholder.textContent = "Choose your fighter first";
+  lakeSelect.appendChild(placeholder);
+}
+
 
 function calculateAverage(data) {
   const years = Object.keys(data).filter(key => key !== "Lake");
@@ -107,12 +155,38 @@ function copyChampionToBattleCard() {
 }
 
 
+// function getRandomFishFromSameLake(lakeName) {
+//   const fishEntries = Object.keys(fishData).filter(fish => {
+//     return fishData[fish].some(entry => entry.Lake === lakeName);
+//   });
+
+//   const randomFish = fishEntries[Math.floor(Math.random() * fishEntries.length)];
+//   const lakeEntry = fishData[randomFish].find(entry => entry.Lake === lakeName);
+
+//   return {
+//     fish: randomFish,
+//     lake: lakeName,
+//     data: lakeEntry
+//   };
+// }
+
 function getRandomFishFromSameLake(lakeName) {
-  const fishEntries = Object.keys(fishData).filter(fish => {
-    return fishData[fish].some(entry => entry.Lake === lakeName);
+  const allowedFish = lakeToFishMap[lakeName] || [];
+
+  const validFishEntries = allowedFish.filter(fish => {
+    const lakeEntry = fishData[fish]?.find(entry => entry.Lake === lakeName);
+    if (!lakeEntry) return false;
+
+    const yearKeys = Object.keys(lakeEntry).filter(k => /^\d{4}$/.test(k));
+    return yearKeys.some(year => lakeEntry[year] > 0);
   });
 
-  const randomFish = fishEntries[Math.floor(Math.random() * fishEntries.length)];
+  if (validFishEntries.length === 0) {
+    console.warn(`No valid opponent fish found for lake "${lakeName}"`);
+    return null;
+  }
+
+  const randomFish = validFishEntries[Math.floor(Math.random() * validFishEntries.length)];
   const lakeEntry = fishData[randomFish].find(entry => entry.Lake === lakeName);
 
   return {
@@ -122,6 +196,35 @@ function getRandomFishFromSameLake(lakeName) {
   };
 }
 
+
+// function updateRightBattleCard() {
+//   const selectedLake = lakeSelect.value;
+//   if (!selectedLake) {
+//     console.warn("No lake selected for opponent generation.");
+//     return;
+//   }
+
+//   const { fish, lake, data } = getRandomFishFromSameLake(selectedLake);
+
+//   selectedFish2 = fish;
+//   selectedLake2 = lake;
+
+//   const average = calculateAverage(data);
+//   const formattedFishName = fish.replaceAll(" ", "_").toLowerCase();
+//   const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
+
+//   const card2 = document.getElementById("card2");
+//   card2.style.backgroundImage = `url('${randomBg}')`;
+ 
+//   const card2Title = document.querySelector("#card2 h3");
+//   card2Title.textContent = fish.toUpperCase();
+//   card2Title.style.color = "#FF6663"; // Red
+
+//   document.querySelector("#card2 img").src = `assets/fish/${formattedFishName}.png`;
+//   document.querySelector("#card2 .card-footer span:nth-child(1)").textContent = lake.toUpperCase();
+//   document.querySelector("#card2 .card-footer span:nth-child(2)").textContent = `${average} KG`;
+// }
+
 function updateRightBattleCard() {
   const selectedLake = lakeSelect.value;
   if (!selectedLake) {
@@ -129,7 +232,13 @@ function updateRightBattleCard() {
     return;
   }
 
-  const { fish, lake, data } = getRandomFishFromSameLake(selectedLake);
+  const result = getRandomFishFromSameLake(selectedLake);
+  if (!result) {
+    alert("No valid opponent fish found for this lake.");
+    return;
+  }
+
+  const { fish, lake, data } = result;
 
   selectedFish2 = fish;
   selectedLake2 = lake;
@@ -140,15 +249,16 @@ function updateRightBattleCard() {
 
   const card2 = document.getElementById("card2");
   card2.style.backgroundImage = `url('${randomBg}')`;
- 
+
   const card2Title = document.querySelector("#card2 h3");
   card2Title.textContent = fish.toUpperCase();
-  card2Title.style.color = "#FF6663"; // Red
+  card2Title.style.color = "#FF6663";
 
   document.querySelector("#card2 img").src = `assets/fish/${formattedFishName}.png`;
   document.querySelector("#card2 .card-footer span:nth-child(1)").textContent = lake.toUpperCase();
   document.querySelector("#card2 .card-footer span:nth-child(2)").textContent = `${average} KG`;
 }
+
 
 
 // BATTLE STUFF --------------------------
