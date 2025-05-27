@@ -1,101 +1,465 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* ---------------------------------------------------
+   ROOT VARIABLES
+--------------------------------------------------- */
+:root {
+  --lightblue: #676AF4;
+  --darkblue: #011638;
+  --text-light: #FFFAE9;
+  --red: #FF6663;
+
+  --font-titles: 'JetBrains Mono', monospace;
+  --font-text: 'Inter', sans-serif;
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
-    font-family: Arial, sans-serif;
+
+/* ---------------------------------------------------
+   GLOBAL STYLES
+--------------------------------------------------- */
+/* html {
+  
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  /* width: 100%; */
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+  font-family: var(--font-text);
 }
 
 section {
     height: 100vh;
     scroll-snap-align: start;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    text-align: center;
     width: 100%;
 }
 
 .section-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  width: 100%;
+}
+ /* .section-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  box-sizing: border-box;
+} */
+
+.section-content2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
-main {
-    width: 100%;
-    max-width: 1000px;
+p {
+  font-weight: 300;
+  font-size: clamp(2rem, 4vw, 35px);
+  text-align: left;
 }
 
-.scroll-arrow {
-    font-size: 2rem;
-    margin-top: 2rem;
-    display: inline-block;
-    animation: bounce 1s infinite;
-    text-decoration: none;
-    color: inherit;
+/* ---------------------------------------------------
+   LAYOUT BASE
+--------------------------------------------------- */
+.layout {
+  min-height: calc(var(--vh, 1vh) * 100);
+  /* width: 100vw; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: url('assets/gradientbg.png') no-repeat center center;
+  background-size: cover;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(10px); }
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
+
+/* ---------------------------------------------------
+   HEADERS / BANNERS
+--------------------------------------------------- */
+.top-bar,
+.top-bar-2 {
+  background-color: var(--lightblue);
+  color: var(--text-light);
+  font-weight: 900;
+  font-size: clamp(1.5rem, 6vw, 2.5rem);
+  font-family: var(--font-titles);
+  text-align: center;
+  padding: 40px 20px;
+  width: 80%;
+}
+
+.top-bar {
+  flex: 1;
+}
+
+.top-bar-2 {
+  margin-left: auto;
+}
+
+.header {
+  background-color: #676AF4;
+  color: white;
+  text-align: center;
+  font-family: var(--font-titles);
+  font-size: clamp(2rem, 5vw, 60px);
+  padding: 30px;
+}
+
+
+/* ---------------------------------------------------
+   BLUE BOX SECTION
+--------------------------------------------------- */
+.blue-box {
+  flex: 3;
+  background-color: var(--darkblue);
+  color: var(--text-light);
+  width: 80%;
+  margin-left: auto;
+  padding: 10% 5% 5% 5%;
+  text-align: center;
+  font-size: 1.25rem;
+}
+
+.blue-box p {
+  padding-left: 25%;
+  text-align: left;
+}
+
+.blue-box strong {
+  font-weight: bold;
+  transition: color 0.1s ease-in-out;
+}
+
+.blue-box strong:hover {
+  color: var(--red);
+  transform: rotate(7deg);
+}
+
+
+/* ---------------------------------------------------
+   BUTTONS
+--------------------------------------------------- */
+.select-btn,
+.arena-button {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text-light);
+  background-color: var(--lightblue);
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+}
+
+.select-btn {
+  margin-top: 5%; /*40px;*/
+  padding: 12px 28px;
+  position: relative;
+  left: 40%;
+  transform: translateX(-100%);
+}
+
+.select-btn:hover {
+  background-color: var(--red);
+  transform: scale(1.1) translateX(-100%);
+}
+
+.arena-button {
+  padding: 12px 24px;
+  width: fit-content;
+  /*position: absolute;*/
+  bottom: 5%;
+}
+
+.arena-button:hover {
+  background-color: var(--red);
+  transform: scale(1.1);
+}
+
+
+/* ---------------------------------------------------
+   PANELS (CHAMPION SELECTION)
+--------------------------------------------------- */
+.content {
+  flex: 1;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.left-panel {
+  background-color: var(--darkblue);
+  color: var(--text-light);
+  width: 66%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
+}
+
+.left-panel label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 20px 0 5px;
+}
+
+.left-panel select {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px 2rem 10px 10px;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  background-color: var(--darkblue);
+  color: var(--text-light);
+  border: 1px solid #ccc;
+  appearance: none;
+  background-image: 'assets/gradientbg.png';
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px 8px;
+}
+
+.right-panel {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 40px; */
+}
+
+
+/* ---------------------------------------------------
+   CARD STYLING
+--------------------------------------------------- */
+.card-wrapper {
+  position: relative;
+  width: 588px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-background {
+  position: absolute;
+  width: 588px;
+  height: 350px;
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+  transform: scale(1.1) translateX(-5px);
+  background: url('assets/labels.png') center center / contain no-repeat;
+}
+
+.card-background.scale-small {
+  transform: scale(1.8) translateX(-5px);
+}
+
+.card-wrapper:hover .card-background {
+  opacity: 1;
 }
 
 .card {
-    display: inline-block;
-    border: 1px solid #333;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
+  width: 250px;
+  height: 350px;
+  border-radius: 30px;
+  background: url('assets/emptyCards/card_empty_4.png') center center / cover no-repeat;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-titles);
+  text-align: center;
+  position: relative;
+  box-sizing: border-box;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transform: rotate(7deg);
+  z-index: 1;
 }
 
-.winner {
-    background-color: lightgreen;
+.card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 50px 60px rgba(60, 50, 50, 0.286);
 }
 
-.loser {
-    background-color: lightcoral;
+.card h3,
+.card-footer,
+.card img {
+  position: absolute;
+  left: 26px;
 }
 
-.selection-container {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin: 20px 0;
+.card h3 {
+  top: 10px;
+  font-size: 1.5rem;
+  color: var(--darkblue);
+  margin: 0;
 }
 
-.selection-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.card img {
+  top: 50px;
+  width: 200px;
+  height: 180px;
+  border-radius: 20px;
 }
 
-#welcome {
-    background-color: #676af4;
-    color: #fffae9;
+.card-footer {
+  top: 300px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: var(--darkblue);
+  font-weight: bold;
 }
 
-#battle-selection {
-    background-color: #ff6663;
+
+/* ---------------------------------------------------
+   BATTLE SECTION
+--------------------------------------------------- */
+.battle {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background: url('assets/gradientbg.png') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
 }
 
-#battle {
-    background-color: #011638;
-    color: #fffae9;
+
+.battle-plot-segment {
+  /* flex: 1; */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: var(--darkblue);
+  /* padding: 2vh 0vh 2vh 0vh; */
+  height: 100vh;
+  width: 30vw;
 }
 
-#information {
-    background-color: #ebebebff;
+
+
+/* ---------------------------------------------------
+   CARD BATTLE LAYOUT
+--------------------------------------------------- */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card-battle-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
+  flex: 8;
+  margin-bottom: 1%;
+}
+
+.middle-battle-card-stuff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-start; /* Start with top for VS text */
+  /* gap: 20px; */
+  position: relative;
+}
+
+.middle-battle-card-stuff .arena-button {
+  margin-top: auto; /* Push to bottom of column */
+}
+
+
+.vs {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  font-family: 'Jolly Lodger';
+  color: var(--red);
+}
+
+
+/* ---------------------------------------------------
+   RESULT DISPLAY
+--------------------------------------------------- */
+.result-display {
+  /* flex: 0 0 30%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text-light);
+  font-family: var(--font-titles);
+  text-transform: uppercase;
+  /* flex-shrink: 0; */
+  width: 60vw;
+}
+
+.left-result {
+  background-color: var(--lightblue);
+  flex: 7;
+  height: 100%;
+  padding: 30px;
+}
+
+.right-result {
+  background-color: var(--red);
+  flex: 3;
+  height: 100%;
+  padding: 30px;
+}
+
+.left-result p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.left-result h2 {
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.right-result p {
+  margin: 5px 0;
+  font-size: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem;
 }

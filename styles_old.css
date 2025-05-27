@@ -2,111 +2,135 @@
    ROOT VARIABLES
 --------------------------------------------------- */
 :root {
-  --lightblue: #676AF4;
-  --darkblue: #011638;
-  --text-light: #FFFAE9;
-  --red: #FF6663;
+    --lightblue: #676AF4;
+    --darkblue: #011638;
+    --text-light: #FFFAE9;
+    --red: #FF6663;
 
-  --font-titles: 'JetBrains Mono', monospace;
-  --font-text: 'Inter', sans-serif;
+    --font-titles: 'JetBrains Mono', monospace;
+    --font-text: 'Inter', sans-serif;
 }
 
-
-/* ---------------------------------------------------
-   GLOBAL STYLES
---------------------------------------------------- */
-html {
-  scroll-behavior: smooth;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: var(--font-text);
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    font-family: var(--font-text);
 }
 
-p {
-  font-weight: 300;
-  font-size: clamp(2rem, 4vw, 35px);
-  text-align: left;
+section {
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
-/* ---------------------------------------------------
-   LAYOUT BASE
---------------------------------------------------- */
+.section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    width: 100%;
+    height: 100vh;
+}
+
 .layout {
-  min-height: calc(var(--vh, 1vh) * 100);
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  background: url('assets/gradientbg.png') no-repeat center center;
-  background-size: cover;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
 }
 
-.content-wrapper {
-  display: flex;
-  flex: 1;
+main {
+    width: 100%;
+    max-width: 2000px;
 }
 
-
-/* ---------------------------------------------------
-   HEADERS / BANNERS
---------------------------------------------------- */
 .top-bar,
-.top-bar-2 {
-  background-color: var(--lightblue);
-  color: var(--text-light);
-  font-weight: 900;
-  font-size: clamp(2rem, 6vw, 80px);
-  font-family: var(--font-titles);
-  text-align: center;
-  padding: 40px 20px;
-  width: 80%;
+.top-bar-2
+{
+    height: 30vh; /* Always 15% of the viewport height */
+    width: 80%;
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    font-weight: 900;
+    font-size: clamp(1.5rem, 8vh, 4rem); /* Responsive font size based on height */
+    font-family: var(--font-titles);
+    text-align: center;
+    display: flex;
+    align-items: center;    /* Vertically center text */
+    justify-content: center; /* Horizontally center text */
+    padding: 0 2%;          /* Only horizontal padding */
+    box-sizing: border-box;
 }
-
-.top-bar-2 {
-  margin-left: auto;
-}
-
-.header {
-  background-color: #676AF4;
-  color: white;
-  text-align: center;
-  font-family: var(--font-titles);
-  font-size: clamp(2rem, 5vw, 60px);
-  padding: 30px;
-}
-
+    /* 
+    {
+        display: flex;
+    flex-direction: column;
+    background-color: var(--lightblue);
+    color: var(--text-light);
+    font-weight: 900;
+    font-size: clamp(1.75rem, 6vw, 80px);
+    font-family: var(--font-titles);
+    text-align: center;
+    padding: clamp(1rem, 3vw, 3rem) 2%;
+    width: 80%;
+    box-sizing: border-box;
+} */
 
 /* ---------------------------------------------------
    BLUE BOX SECTION
 --------------------------------------------------- */
 .blue-box {
-  background-color: var(--darkblue);
-  color: var(--text-light);
-  width: 80%;
-  margin-left: auto;
-  padding: 10% 5% 5% 5%;
-  text-align: center;
-  font-size: 1.25rem;
+    background-color: var(--darkblue);
+    color: var(--text-light);
+    width: 80%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25rem;
 }
 
-.blue-box p {
-  padding-left: 25%;
-  text-align: left;
+.blue-box-content {
+    max-height: 100%;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0 0;
+    box-sizing: border-box;
+}
+
+.blue-box-content p {
+    text-align: left;
 }
 
 .blue-box strong {
-  font-weight: bold;
-  transition: color 0.1s ease-in-out;
+    font-weight: bold;
+    transition: color 0.1s ease-in-out;
 }
 
 .blue-box strong:hover {
-  color: var(--red);
-  transform: rotate(7deg);
+    color: var(--red);
+    transform: rotate(7deg);
 }
-
 
 /* ---------------------------------------------------
    BUTTONS
@@ -124,43 +148,77 @@ p {
 }
 
 .select-btn {
-  margin-top: 40px;
-  padding: 12px 28px;
-  position: relative;
-  left: 40%;
-  transform: translateX(-100%);
+    margin-top: 1.5rem; /* smaller push */
+    padding: 12px 28px;
+    align-self: center; /* centers inside the flex column */
+    transform: none;
+    left: auto;
 }
 
 .select-btn:hover {
   background-color: var(--red);
-  transform: scale(1.1) translateX(-100%);
+  transform: scale(1.1); /*translateX(-100%);*/
 }
 
-.arena-button {
-  padding: 12px 24px;
-  width: fit-content;
-  /*position: absolute;*/
-  bottom: 5%;
+/*,
+.arena-button*/
+    /* {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-light);
+    background-color: var(--lightblue);
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.1s ease-in-out;
 }
 
-.arena-button:hover {
-  background-color: var(--red);
-  transform: scale(1.1);
+.select-btn {
+    margin-top: 40px;
+    padding: 12px 28px;
+    position: relative;
+    left: 40%;
+    transform: translateX(-100%);
+} */
+
+
+
+
+.scroll-arrow {
+    font-size: 2rem;
+    margin-top: 2rem;
+    display: inline-block;
+    animation: bounce 1s infinite;
+    text-decoration: none;
+    color: inherit;
 }
 
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
+}
 
 /* ---------------------------------------------------
    PANELS (CHAMPION SELECTION)
 --------------------------------------------------- */
 .content {
-  flex: 1;
   display: flex;
+  width: 100%;
+  height: 70vh;
 }
 
 .left-panel {
   background-color: var(--darkblue);
   color: var(--text-light);
-  width: 66%;
+  height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -192,6 +250,7 @@ p {
 }
 
 .right-panel {
+    height: 100%;
   width: 50%;
   display: flex;
   align-items: center;
@@ -205,8 +264,8 @@ p {
 --------------------------------------------------- */
 .card-wrapper {
   position: relative;
-  width: 588px;
-  height: 350px;
+  width: 80%;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,8 +292,10 @@ p {
 }
 
 .card {
-  width: 250px;
-  height: 350px;
+  /* width: 250px;
+  height: 350px; */
+  width: clamp(150px, 20vw, 300px);
+  height: clamp(210px, 28vw, 420px);
   border-radius: 30px;
   background: url('assets/emptyCards/card_empty_4.png') center center / cover no-repeat;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
@@ -259,32 +320,48 @@ p {
 .card h3,
 .card-footer,
 .card img {
-  position: absolute;
+  /* position: absolute; */
   left: 26px;
 }
 
 .card h3 {
-  top: 10px;
-  font-size: 1.5rem;
+  /* top: 10px; */
+  font-size: clamp(1rem, 2vw, 1.5rem);
   color: var(--darkblue);
   margin: 0;
 }
 
-.card img {
+/* .card img {
   top: 50px;
   width: 200px;
   height: 180px;
   border-radius: 20px;
+} */
+
+.card img {
+  width: 80%;
+  height: auto;
+  max-height: 50%;
+  object-fit: cover;
+  border-radius: 1em;
+  display: block;
 }
 
+
 .card-footer {
-  top: 300px;
+  position: absolute;
+  top: calc(1.5em + 75%); /* 1.5em for title, 45% into image area */
+  left: 45%;
+  transform: translateX(-50%);
   width: 80%;
   display: flex;
   justify-content: space-between;
   font-size: 0.9rem;
   color: var(--darkblue);
   font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 10px;
+  pointer-events: none;
 }
 
 
@@ -302,13 +379,7 @@ p {
   position: relative;
 }
 
-.section-content {
-  flex: 6;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
-}
+
 
 
 
@@ -410,4 +481,51 @@ main {
 .right-result p {
   margin: 5px 0;
   font-size: 1.5rem;
+}
+
+footer {
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.5rem;
+}
+
+
+
+.winner {
+    background-color: lightgreen;
+}
+
+.loser {
+    background-color: lightcoral;
+}
+
+.selection-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 0;
+}
+
+.selection-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#welcome {
+    background-color: #676af4;
+    color: #fffae9;
+}
+
+#battle-selection {
+    background-color: #ff6663;
+}
+
+#battle {
+    background-color: #011638;
+    color: #fffae9;
+}
+
+#information {
+    background-color: #ebebebff;
 }
