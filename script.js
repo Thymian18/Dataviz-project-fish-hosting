@@ -24,7 +24,7 @@ const attackValue = document.getElementById("attackValue");
 
 let fishData = {};
 
-fetch("data/commercialFishing.json")
+fetch("data/hobbyFishing.json")
   .then(res => res.json())
   .then(data => {
     fishData = data;

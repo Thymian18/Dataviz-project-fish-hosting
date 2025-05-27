@@ -9,11 +9,11 @@ def makeCleanedSheetDictionary(sheets_dict):
 
     cleaned_sheets = {}
     for sheet_name, df in sheets_dict.items():
-        cleaned_sheets[sheet_name] = df.iloc[4:].reset_index(drop=True) 
-        
+        cleaned_sheets[sheet_name] = df.iloc[4:].reset_index(drop=True)
+
         cleaned_sheets[sheet_name] = cleaned_sheets[sheet_name] .drop(cleaned_sheets[sheet_name] .index[1:3])
-        cleaned_sheets[sheet_name].columns = cleaned_sheets[sheet_name].iloc[0] 
-        cleaned_sheets[sheet_name] = cleaned_sheets[sheet_name][1:].reset_index(drop=True) 
+        cleaned_sheets[sheet_name].columns = cleaned_sheets[sheet_name].iloc[0]
+        cleaned_sheets[sheet_name] = cleaned_sheets[sheet_name][1:].reset_index(drop=True)
         cleaned_sheets[sheet_name] = cleaned_sheets[sheet_name].drop(cleaned_sheets[sheet_name].index[0])
         cleaned_sheets[sheet_name].columns.values[0] = "Lake"
         cleaned_sheets[sheet_name].columns.values[1] = "LakeArea"
@@ -24,9 +24,9 @@ def makeCleanedSheetDictionary(sheets_dict):
 def createTroutFrame(df_dict, year_interval):
     # Initialize an empty DataFrame with "Lake" as the index
     df_trouts = pd.DataFrame()
-    
+
     # Get lakes from the most recent year available
-   
+
     lakes = df_dict['2021'][['Lake', 'Seeforelle']]
     df_trouts = lakes.set_index("Lake")  # Set "Lake" as index
 
@@ -38,7 +38,10 @@ def createTroutFrame(df_dict, year_interval):
             df_year = df.set_index("Lake")["Seeforelle"]  # Align by "Lake"
             df_trouts[year] = df_year  # Add to dataframe
 
-    df_trouts = df_trouts.fillna(0)
+    
+    # df_trouts = df_trouts.fillna(0)
+    df_trouts = df_trouts.infer_objects(copy=False)
+
     df_trouts.reset_index(inplace = True)
     df_trouts.drop('Seeforelle', axis = 1, inplace = True)
     return df_trouts
@@ -46,9 +49,9 @@ def createTroutFrame(df_dict, year_interval):
 def createFishFrame(df_dict, year_interval, fishname):
     # Initialize an empty DataFrame with "Lake" as the index
     df_trouts = pd.DataFrame()
-    
+
     # Get lakes from the most recent year available
-   
+
     lakes = df_dict['2021'][['Lake', fishname]]
     df_trouts = lakes.set_index("Lake")  # Set "Lake" as index
 
@@ -60,7 +63,9 @@ def createFishFrame(df_dict, year_interval, fishname):
             df_year = df.set_index("Lake")[fishname]  # Align by "Lake"
             df_trouts[year] = df_year  # Add to dataframe
 
-    df_trouts = df_trouts.fillna(0)
+    # print("Debug: ", df_trouts.head())
+    # df_trouts = df_trouts.fillna(0)
+    df_trouts = df_trouts.infer_objects(copy=False)
     df_trouts.reset_index(inplace = True)
     df_trouts.drop(fishname, axis = 1, inplace = True)
     return df_trouts
@@ -81,13 +86,13 @@ def LakeTimeseries(df_dict, lakeName,year_interval):
 
         timeseries.append(value)
         years.append(i)
-    
+
     return timeseries, years
 
 def plot_lake_timeseries(years, timeseries, lake_name):
     df = pd.DataFrame({'Year': years, 'Seeforelle': timeseries})
 
-    fig = px.line(df, x='Year', y='Seeforelle', 
+    fig = px.line(df, x='Year', y='Seeforelle',
                   title=f'Laketrout fishing count  in {lake_name} Over Time',
                   labels={'Year': 'Year', 'Seeforelle': 'Laketrout fishing count'},
                   markers=True)
