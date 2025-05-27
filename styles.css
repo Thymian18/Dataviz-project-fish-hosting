@@ -210,7 +210,7 @@ p {
 .left-panel {
   background-color: var(--darkblue);
   color: var(--text-light);
-  width: 66%;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -242,7 +242,7 @@ p {
 }
 
 .right-panel {
-  width: 50vw;
+  width: 60vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,7 +270,7 @@ p {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease-in-out;
-  transform: scale(1.1) translateX(-5px);
+  transform: scale(1.0) translateX(-5px);
   background: url('assets/labels.png') center center / contain no-repeat;
 }
 
@@ -361,7 +361,7 @@ p {
   background-color: var(--darkblue);
   /* padding: 2vh 0vh 2vh 0vh; */
   height: 100vh;
-  width: 30vw;
+  width: 35vw;
 }
 
 
@@ -426,7 +426,7 @@ main {
   font-family: var(--font-titles);
   text-transform: uppercase;
   /* flex-shrink: 0; */
-  width: 60vw;
+  width: 65vw;  /* needs to sum to 100vw with battle-plot-segment */
 }
 
 .left-result {
