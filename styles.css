@@ -463,3 +463,10 @@ footer {
   font-size: 1rem;
   padding: 0.5rem;
 }
+
+
+#start-info p {
+  font-weight: 300;
+  font-size: clamp(1rem, 4vw, 20px);
+  text-align: left;
+}
