@@ -37,12 +37,25 @@
                 <div class="blue-box">
                     <div class="blue-box-content">
                         <p>
+                            Choose your <strong>fish</strong>. Pick a <strong>lake</strong>. Let the <strong>battle</strong> begin.<br><br>
+                            Explore real data from Swiss lakes by turning fishing<br>
+                            stats into strategic showdowns.<br><br>
+                            Each duel reveals how much we fish, where, and how that’s changed over the past 30 years.
+                        </p>
+                        <!-- <p>
+                            Explore real data from Swiss lakes by turning fishing<br>
+                            stats into strategic showdowns.
+                        </p>
+                        <p>
+                            Each duel reveals how much we fish, where, and how that’s changed over the past 30 years.
+                        </p> -->
+                        <!-- <p>
                             SELECT A <strong>CHAMPION</strong> AND<br />THEIR MAIN
                             <strong>ATTACK</strong>
                         </p>
                         <p>
                             & LET IT <strong>FIGHT</strong> AGAINST A<br />WORTHY OPPONENT!
-                        </p>
+                        </p> -->
                         <a href="#champion-selection">
                             <button class="select-btn">SELECT CHAMPION</button>
                         </a>
@@ -52,6 +65,30 @@
         </div>
     </section>
 
+    <!-- <section id="start-info" class="start-info">
+        <div class="section-content">
+            <div class="layout">
+                <div class="top-bar">
+                    RULES
+                </div>
+                <div class="blue-box">
+                    <div class="blue-box-content">
+                        <p>
+                            BEFORE WE START, THE RULES:<br><br>
+                            1. SELECT A FISH (CHAMPION) AND A LAKE (ATTACK)<br>
+                            2. THE OPPONENT WILL BE RANDOMLY SELECTED<br>
+                            3. THE CHAMPION WITH THE HIGHER NUMBER IN A YEAR WINS THE POINT<br>
+                            4. THE CHAMPION WITH THE MOST POINTS AT THE END WINS THE MATCH
+                        </p>
+                        <a href="#champion-selection">
+                            <button class="select-btn">SELECT CHAMPION</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
     <section id="champion-selection">
         <div class="section-content">
             <div class="top-bar-2">
@@ -60,9 +97,18 @@
 
             <div class="content">
                 <div class="left-panel">
+                    
+                    <div class="toggle-container">
+                        <label class="switch-label">MODE:</label>
+                        <label class="switch">
+                            <input type="checkbox" id="modeToggle" onchange="handleModeToggle(this)">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="mode-text" id="modeText">Hobby</span>
+                    </div>
                     <label for="fishSelect">SELECT FIGHTER:</label>
                     <select id="fishSelect">
-                        <option disabled selected value="">-- Select Fish --</option>
+                        <option disabled selected value="">-- Select fish --</option>
                     </select>
 
                     <label for="lakeSelect">SELECT ATTACK:</label>

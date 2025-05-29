@@ -1,0 +1,66 @@
+{
+    "AAL": {
+        "description": "...",
+        "family": "Anguillidae"
+    },
+    "AGONE": {
+        "description": "...",
+        "family": "Hering"
+    },
+    "SEEFORELLE": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "SEESAIBLING": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "FELCHEN": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "ÄSCHE": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "HECHT": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "KARPFEN": {
+        "description": "...",
+        "family": "Cyprinidae"
+    },
+    "BRACHSME": {
+        "description": "...",
+        "family": "Cyprinidae"
+    },
+    "ALBORELLA": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "ROTAUGEN": {
+        "description": "...",
+        "family": "Salmonidae"
+    },
+    "SCHLEIE": {
+        "description": "...",
+        "family": "Cyprinidae"
+    },
+    "WELS": {
+        "description": "...",
+        "family": "Siluridae"
+    },
+    "TRÜSCHE": {
+        "description": "...",
+        "family": "Cyprinidae"
+    },
+    "BARSCH": {
+        "description": "...",
+        "family": "Percidae"
+    },
+    "ZANDER": {
+        "description": "...",
+        "family": "Percidae"
+    }
+}
