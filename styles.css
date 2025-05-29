@@ -135,14 +135,16 @@ p {
   color: var(--text-light);
   width: 80%;
   margin-left: auto;
-  padding: 10% 5% 5% 5%;
+  padding: 5% 5% 5% 5%;
   text-align: center;
   font-size: 1.25rem;
 }
 
 .blue-box p {
-  padding-left: 25%;
+  padding-left: 10%;
   text-align: left;
+  font-weight: 300;
+  font-size: clamp(1rem, 2.5vw, 30px);
 }
 
 .blue-box strong {
