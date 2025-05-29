@@ -97,9 +97,17 @@
 
             <div class="content">
                 <div class="left-panel">
+                    <div class="toggle-container">
+                        <label class="switch-label">MODE:</label>
+                        <label class="switch">
+                            <input type="checkbox" id="modeToggle" onchange="handleModeToggle(this)">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="mode-text" id="modeText">Hobby</span>
+                    </div>
                     <label for="fishSelect">SELECT FIGHTER:</label>
                     <select id="fishSelect">
-                        <option disabled selected value="">-- Select Fish --</option>
+                        <option disabled selected value="">-- Select fish --</option>
                     </select>
 
                     <label for="lakeSelect">SELECT ATTACK:</label>

@@ -22,24 +22,60 @@ const fishName = document.getElementById("fishName");
 const lakeName = document.getElementById("lakeName");
 const attackValue = document.getElementById("attackValue");
 
-let fishData = {};
-
-fetch("data/hobbyFishing.json")
-  .then(res => res.json())
-  .then(data => {
-    fishData = data;
-    populateDropdowns(data);
-    setLakePlaceholder();
-  });
+let fishDataHobby = {};
+let fishDataCommercial = {};
+let lakeToFishMapCommercial = {};
+let lakeToFishMapHobby = {};
+let currentMode = 'hobby';
 
 // to hold the mapping of lakes to fish for the sampling of the right battle card
-let lakeToFishMap = {};
 
-fetch("data/commercial_lakesToFish.json")
-  .then(res => res.json())
-  .then(data => {
-    lakeToFishMap = data;
-  });
+
+// fetch("data/commercial_lakesToFish.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     lakeToFishMapCommercial = data;
+//   });
+
+Promise.all([
+  fetch("data/hobbyFishing.json").then(res => res.json()),
+  fetch("data/commercialFishing.json").then(res => res.json()),
+  fetch("data/hobby_lakesToFish.json").then(res => res.json()),
+  fetch("data/commercial_lakesToFish.json").then(res => res.json()),
+]).then(([hobbyData, commercialData, hobbyLakesToFish, commercialLakesToFish]) => {
+  fishDataHobby = hobbyData;
+  fishDataCommercial = commercialData;
+  lakeToFishMapHobby = hobbyLakesToFish;
+  lakeToFishMapCommercial = commercialLakesToFish;
+
+  // Initialize dropdowns using default mode
+  populateDropdowns(getCurrentData());
+  setLakePlaceholder();
+});
+
+// fetch("data/hobbyFishing.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     fishDataHobby = data;
+//     populateDropdowns(data);
+//     setLakePlaceholder();
+//   });
+
+// fetch("data/commercialFishing.json")
+//   .then(res => res.json())
+//   .then(data => {
+//     fishDataCommercial = data;
+//     // If you want to populate commercial data, you can do it here
+//     // populateDropdowns(data);
+//   });
+
+function getCurrentData() {
+  return currentMode === "hobby" ? fishDataHobby : fishDataCommercial;
+}
+
+function getCurrentLakeToFishMap() {
+  return currentMode === "hobby" ? lakeToFishMapHobby : lakeToFishMapCommercial;
+}
 
 
 function populateDropdowns(data) {
@@ -59,7 +95,9 @@ fishSelect.addEventListener("change", () => {
 function populateLakesForFish(fish) {
   lakeSelect.innerHTML = "";
 
-  const lakeEntries = fishData[fish];
+  const lakeEntries = getCurrentData()[fish];
+  // const lakeEntries = fishDataHobby[fish];
+  if (!lakeEntries) return;
   const yearKeys = Object.keys(lakeEntries[0]).filter(key => /^\d{4}$/.test(key));
 
   let addedAny = false;
@@ -91,7 +129,7 @@ function setLakePlaceholder() {
   const placeholder = document.createElement("option");
   placeholder.disabled = true;
   placeholder.selected = true;
-  placeholder.textContent = "Choose your fighter first";
+  placeholder.textContent = "-- Choose your fighter first --";
   lakeSelect.appendChild(placeholder);
 }
 
@@ -110,6 +148,7 @@ function updateCard() {
   fishName.textContent = fish ? fish.toUpperCase() : "-";
   lakeName.textContent = lake ? lake.toUpperCase() : "-";
 
+  const fishData = getCurrentData();
   if (fish && lake && fishData[fish]) {
     const lakeData = fishData[fish].find(entry => entry.Lake === lake);
 
@@ -156,12 +195,12 @@ function copyChampionToBattleCard() {
 
 
 // function getRandomFishFromSameLake(lakeName) {
-//   const fishEntries = Object.keys(fishData).filter(fish => {
-//     return fishData[fish].some(entry => entry.Lake === lakeName);
+//   const fishEntries = Object.keys(fishDataHobby).filter(fish => {
+//     return fishDataHobby[fish].some(entry => entry.Lake === lakeName);
 //   });
 
 //   const randomFish = fishEntries[Math.floor(Math.random() * fishEntries.length)];
-//   const lakeEntry = fishData[randomFish].find(entry => entry.Lake === lakeName);
+//   const lakeEntry = fishDataHobby[randomFish].find(entry => entry.Lake === lakeName);
 
 //   return {
 //     fish: randomFish,
@@ -171,8 +210,9 @@ function copyChampionToBattleCard() {
 // }
 
 function getRandomFishFromSameLake(lakeName) {
-  const allowedFish = lakeToFishMap[lakeName] || [];
+  const allowedFish = getCurrentLakeToFishMap()[lakeName] || [];
 
+  const fishData = getCurrentData();
   const validFishEntries = allowedFish.filter(fish => {
     const lakeEntry = fishData[fish]?.find(entry => entry.Lake === lakeName);
     if (!lakeEntry) return false;
@@ -287,6 +327,8 @@ function prepareBattle() {
 function startBattle() {
   selectedFish1 = fishSelect.value;
   selectedLake1 = lakeSelect.value;
+
+  const fishData = getCurrentData();
 
   const entry1 = fishData[selectedFish1]?.find(e => e.Lake === selectedLake1);
   const entry2 = fishData[selectedFish2]?.find(e => e.Lake === selectedLake2);
@@ -475,4 +517,18 @@ function setupBattlePlot(years, maxY) {
     .style("font-size", "14px")
     .style("font-family", "var(--font-titles)")
     .text("KG FISHED");
+}
+
+
+
+
+function handleModeToggle(toggle) {
+  const modeText = document.getElementById('modeText');
+  currentMode = toggle.checked ? "commercial" : "hobby";
+  modeText.textContent = toggle.checked ? "Commercial" : "Hobby";
+  fishSelect.selectedIndex = 0;
+
+  // Re-populate with correct dataset
+  populateDropdowns(getCurrentData());
+  setLakePlaceholder();
 }
