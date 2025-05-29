@@ -216,14 +216,14 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   padding: 60px;
 }
 
 .left-panel label {
   font-size: 1.5rem;
   font-weight: bold;
-  margin: 20px 0 5px;
+  margin: 20px 0 5px 0;
 }
 
 .left-panel select {
@@ -476,7 +476,7 @@ footer {
 
 .toggle-container {
   display: flex;
-  align-items: center;
+  align-items: left;
   margin-bottom: 20px;
   gap: 10px;
 }
@@ -532,6 +532,8 @@ input:checked + .slider::before {
 }
 
 .mode-text {
+  align-self: center;
+  padding: 5% 0 0 0;
   font-weight: 400;
   font-size: 1rem;
 }
