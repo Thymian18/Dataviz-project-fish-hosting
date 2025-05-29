@@ -50,6 +50,10 @@ def createFishFrame(df_dict, year_interval, fishname):
     # Initialize an empty DataFrame with "Lake" as the index
     df_trouts = pd.DataFrame()
 
+    if fishname == 'Felchen':
+        print(df_dict.keys())
+        print(df_dict['2014'][['Lake', fishname]])
+
     # Get lakes from the most recent year available
 
     lakes = df_dict['2021'][['Lake', fishname]]
