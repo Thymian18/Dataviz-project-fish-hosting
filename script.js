@@ -156,7 +156,7 @@ function updateCard() {
       const average = calculateAverage(lakeData);
       attackValue.textContent = `${average} KG`;
 
-      fishImage.src = `assets/fish/${fish}.png`;
+      fishImage.src = `assets/fish/${fish.toLowerCase()}.png`;
       const randomBg = cardBackgrounds[Math.floor(Math.random() * cardBackgrounds.length)];
       document.getElementById("fishCard").style.backgroundImage = `url('${randomBg}')`;
     }
