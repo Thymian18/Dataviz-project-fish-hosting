@@ -90,7 +90,8 @@ However, the use cases of our datasets are rare, which suggests the novelty of o
 
 ## Milestone 3 (30th May, 5pm)
 
-**80% of the final grade**
+**80% of the final grade**  
+
 [Here](https://epflch-my.sharepoint.com/:v:/g/personal/damian_kopp_epfl_ch/EeRCBwQ8TBNOg4wQCM3ZI-0Bf6kfLkDg7_XvjgDWYNjkyQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VkUie1) you can find the screencast. Make sure to open the link using your EPFL account.
 
 The current website can be found [here](https://thymian18.github.io/Dataviz-project-fish-hosting/).
