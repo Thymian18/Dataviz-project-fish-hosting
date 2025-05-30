@@ -222,7 +222,6 @@ function getRandomFishFromSameLake(lakeName) {
   });
 
   if (validFishEntries.length === 0) {
-    console.warn(`No valid opponent fish found for lake "${lakeName}"`);
     return null;
   }
 
@@ -274,7 +273,8 @@ function updateRightBattleCard() {
 
   const result = getRandomFishFromSameLake(selectedLake);
   if (!result) {
-    alert("No valid opponent fish found for this lake.");
+    alert(`No valid opponent fish found for lake "${selectedLake}"\nMake sure you choose a fighter and an attack.`)
+
     return;
   }
 

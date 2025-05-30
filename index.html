@@ -35,10 +35,11 @@
                 <div class="blue-box">
                     <div class="blue-box-content">
                         <p>
-                            Choose your <strong>fish</strong>. Pick a <strong>lake</strong>. Let the <strong>battle</strong> begin.<br><br>
-                            Explore real data from Swiss lakes by turning fishing<br>
-                            stats into strategic showdowns.<br><br>
-                            Each duel reveals how much we fish, where, and how that’s changed over the past 20 years.
+                            Choose your <strong class="with-expl" data-tooltip="In the battle, the fish is referenced as &quot;Fighter&quot;.">fish</strong>. 
+                            Pick a <strong class="with-expl" data-tooltip="In the battle, the lake is referenced as &quot;Attack&quot;.">lake</strong>. Let the <strong>battle</strong> begin.<br><br>
+                            Explore real data from <strong>Swiss</strong> lakes by turning <strong>fishing<br>
+                            stats</strong> into <strong>strategic showdowns</strong>.<br><br>
+                            Each duel reveals how much we fish, in which lake, and how that’s changed <i>over the past 20 years</i>.
                         </p>
                         <a href="#champion-selection">
                             <button class="select-btn">SELECT CHAMPION</button>
@@ -57,7 +58,6 @@
 
             <div class="content">
                 <div class="left-panel">
-                    
                     <div class="toggle-container">
                         <label class="switch-label">MODE:</label>
                         <label class="switch">
@@ -66,15 +66,22 @@
                         </label>
                         <span class="mode-text" id="modeText">Hobby</span>
                     </div>
-                    <label for="fishSelect">SELECT FIGHTER:</label>
+                    <div class="tooltip-container">
+                        <label for="fishSelect">SELECT <strong>FIGHTER</strong>:</label>
+                        <span class="tooltip-text">Choose a fish species to fight with.</span>
+                    </div>
                     <select id="fishSelect">
                         <option disabled selected value="">-- Select fish --</option>
                     </select>
 
-                    <label for="lakeSelect">SELECT ATTACK:</label>
+                    <div class="tooltip-container">
+                        <label for="lakeSelect">SELECT <strong>ATTACK</strong>:</label>
+                        <span class="tooltip-text">Pick from one of the lakes the fish lives in and check out the average damage.<br>It corresponds to the average amount of that fish caught over the past 20 years in that lake.<br>The lake defines the battleground of the match.<br>The opponent is chosen randomly from the same lake.</span>
+                    </div>
                     <select id="lakeSelect">
                         <option disabled selected value="">-- Select Lake --</option>
                     </select>
+
                     <a href="#battle">
                         <button class="arena-button" onclick="prepareBattle()">GO TO ARENA!</button>
                     </a>
