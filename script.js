@@ -294,6 +294,7 @@ function updateRightBattleCard() {
   card2Title.textContent = fish.toUpperCase();
   card2Title.style.color = "#FF6663";
 
+  // console.log(`Formatted fish name: ${formattedFishName}`);
   document.querySelector("#card2 img").src = `assets/fish/${formattedFishName}.png`;
   document.querySelector("#card2 .card-footer span:nth-child(1)").textContent = lake.toUpperCase();
   document.querySelector("#card2 .card-footer span:nth-child(2)").textContent = `${average} KG`;
